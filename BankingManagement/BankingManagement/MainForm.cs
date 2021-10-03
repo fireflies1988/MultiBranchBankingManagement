@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace BankingManagement
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public MainForm()
-        {   
+        {
             InitializeComponent();
             InitializeData();
         }
@@ -26,6 +27,48 @@ namespace BankingManagement
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private Form CheckExists(Type formType)
+        {
+            foreach (Form f in MdiChildren)
+            {
+                if (f.GetType() == formType)
+                {
+                    return f;
+                }
+            }
+            return null;
+        }
+
+        private void barButtonItemEmployee_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(EmployeeForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new EmployeeForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(CustomerForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new CustomerForm();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }

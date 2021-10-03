@@ -15,42 +15,33 @@ namespace BankingManagement
         private void LoginForm_Load(object sender, EventArgs e)
         {
             LoadDataIntoBranchCombobox();
-            Program.SubscriberName = comboBoxBranch.SelectedValue.ToString();
         }
 
         private void LoadDataIntoBranchCombobox()
         {
-            using (SqlConnection connection = new SqlConnection())
+            try
             {
-                try
+                using (SqlConnection connection = Program.GetConnectionToPublisher())
                 {
-                    connection.ConnectionString = Program.GetConnectionString(Program.PublisherName);
-                    connection.Open();
                     DataTable dt = new DataTable();
                     SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM vw_SubscriberServers", connection);
                     sda.Fill(dt);
                     Program.Subscribers.DataSource = dt;
-                    comboBoxBranch.DataSource = Program.Subscribers;
-                    comboBoxBranch.DisplayMember = "TENCN";
-                    comboBoxBranch.ValueMember = "TENSERVER";
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Không thể kết nối với cơ sở dữ liệu!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
-                }
+                comboBoxBranch.DataSource = Program.Subscribers;
+                comboBoxBranch.DisplayMember = "TENCN";
+                comboBoxBranch.ValueMember = "TENSERVER";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Không thể kết nối với cơ sở dữ liệu!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
         private void textBoxExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void comboBoxBranch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Program.SubscriberName = comboBoxBranch.SelectedValue.ToString();
-            Console.WriteLine(Program.SubscriberName);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -61,16 +52,17 @@ namespace BankingManagement
                 return;
             }
 
-            using (SqlConnection connection = new SqlConnection())
+            Program.SubscriberName = comboBoxBranch.SelectedValue.ToString();
+            Program.SelectedBranchIndex = comboBoxBranch.SelectedIndex;
+            Program.LoginName = textBoxLoginName.Text;
+            Program.Password = textBoxPassword.Text;
+
+            try
             {
-                try
+                using (SqlConnection connection = Program.GetConnectionToSubsciber())
                 {
-                    connection.ConnectionString = Program.GetConnectionString(Program.SubscriberName, textBoxLoginName.Text, textBoxPassword.Text);
-                    connection.Open();
-                    Program.LoginName = textBoxLoginName.Text;
-                    Program.Password = textBoxPassword.Text;
-                    String commandText = "EXEC sp_Login_GetEmployeeInfo '" + Program.LoginName + "'";
-                    using (SqlDataReader reader = Program.CreateDataReader(connection, commandText))
+                    String cmdText = "EXEC sp_Login_GetEmployeeInfo @LoginName = '" + Program.LoginName + "'";
+                    using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
                     {
                         if (reader == null) return;
                         reader.Read();
@@ -79,16 +71,16 @@ namespace BankingManagement
                         Program.GroupName = reader.GetString(2);
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(this, "Tên đăng nhập hoặc mật khẩu không chính xác!\n" + ex.Message, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(this, ex.Message + "\n" + ex.StackTrace, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(this, "Tên đăng nhập hoặc mật khẩu không chính xác!\n" + ex.Message, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            catch (Exception ex) // for sa
+            {
+                MessageBox.Show(this, ex.Message + "\n" + ex.StackTrace, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
             Hide();
