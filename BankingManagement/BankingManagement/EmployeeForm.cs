@@ -188,10 +188,12 @@ namespace BankingManagement
 
         private void barButtonItemModify_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int checkState = checkBoxDeleted.Checked ? 1 : 0;
             originalEmployeeID = textBoxEmployeeID.Text.TrimEnd();
             oldEmployeeInfo = textBoxEmployeeID.Text + "#" + textBoxFamilyName.Text + "#" +
                         textBoxName.Text + "#" + textBoxAddress.Text + "#" + comboBoxSex.Text + "#" +
-                        textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text;
+                        textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text + "#" + checkState;
+            Console.WriteLine(oldEmployeeInfo);
 
             ChangeFormAppearanceWhenAddingOrEditing(true);
         }
@@ -203,12 +205,8 @@ namespace BankingManagement
 
         private void barButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // !!!!!!!!!!!!!!!!!!!!!
-            if (nhanVienBindingSource.Count == 0)
-            {
-                barButtonItemDelete.Enabled = false;
-            }
-            else if (gdChuyenTienBindingSource.Count > 0)
+            // !!!!!!!!!!!!!!!!!!!!! Login account
+            if (gdChuyenTienBindingSource.Count > 0)
             {
                 MessageBox.Show(this, "Không thể xóa nhân viên này vì có ràng buộc với các giao dịch chuyển tiền!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -221,9 +219,10 @@ namespace BankingManagement
                 try
                 {
                     // !!!!!!!!!!!!!!!!!!!!! remember to handle # sign
+                    int checkState = checkBoxDeleted.Checked ? 1 : 0;
                     String employeeInfo = textBoxEmployeeID.Text + "#" + textBoxFamilyName.Text + "#" +
                         textBoxName.Text + "#" + textBoxAddress.Text + "#" + comboBoxSex.Text + "#" +
-                        textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text;
+                        textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text + "#" + checkState;
 
                     nhanVienBindingSource.RemoveCurrent();
                     Validate();
@@ -239,6 +238,10 @@ namespace BankingManagement
                 {
                     MessageBox.Show(this, "Xóa nhân viên không thành công!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            if (nhanVienBindingSource.Count == 0)
+            {
+                barButtonItemDelete.Enabled = false;
             }
         }
 
@@ -277,6 +280,7 @@ namespace BankingManagement
                 catch (Exception ex)
                 {
                     MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
 
@@ -362,11 +366,10 @@ namespace BankingManagement
                 }
                 else if (statement == "UPDATE")
                 {
-                    // !!!!!!!!!!!!! remember to handle trangThaiXoa
                     String currentEmployeeID = undoList.Pop();
                     String oldEmployeeInfo = undoList.Pop();
                     String[] tokens = oldEmployeeInfo.Split('#');
-                    nhanVienTableAdapter.MyUpdateFunc(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], 0, currentEmployeeID);
+                    nhanVienTableAdapter.MyUpdateFunc(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], int.Parse(tokens[7]), currentEmployeeID);
                     RefreshDataSet();
                     nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", tokens[0]);
                 }

@@ -68,16 +68,19 @@
     <Compile Include="ChangeBranchDialog.Designer.cs">
       <DependentUpon>ChangeBranchDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerDataSet.cs">
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeDataSet.Designer.cs">
+    <Compile Include="CustomerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EmployeeDataSet.xsd</DependentUpon>
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="EmployeeForm.cs">
       <SubType>Form</SubType>
@@ -137,16 +140,16 @@
     <None Include="BankDataSet.xss">
       <DependentUpon>BankDataSet.xsd</DependentUpon>
     </None>
-    <None Include="EmployeeDataSet.xsc">
-      <DependentUpon>EmployeeDataSet.xsd</DependentUpon>
+    <None Include="CustomerDataSet.xsc">
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </None>
-    <None Include="EmployeeDataSet.xsd">
+    <None Include="CustomerDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EmployeeDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>CustomerDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="EmployeeDataSet.xss">
-      <DependentUpon>EmployeeDataSet.xsd</DependentUpon>
+    <None Include="CustomerDataSet.xss">
+      <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

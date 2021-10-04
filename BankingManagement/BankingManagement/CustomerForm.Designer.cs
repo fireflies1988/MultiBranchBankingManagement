@@ -57,6 +57,7 @@ namespace BankingManagement
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.comboBoxBranch = new System.Windows.Forms.ComboBox();
             this.groupControlInformation = new DevExpress.XtraEditors.GroupControl();
+            this.label5 = new System.Windows.Forms.Label();
             this.dateEditDateOfIssue = new DevExpress.XtraEditors.DateEdit();
             this.khachHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerDataSet = new BankingManagement.CustomerDataSet();
@@ -70,7 +71,7 @@ namespace BankingManagement
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxFamilyName = new System.Windows.Forms.TextBox();
-            this.textBoxEmployeeID = new System.Windows.Forms.TextBox();
+            this.textBoxCMND = new System.Windows.Forms.TextBox();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.khachHangGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -224,60 +225,67 @@ namespace BankingManagement
             // 
             this.barButtonItemAdd.Caption = "Thêm";
             this.barButtonItemAdd.Id = 0;
-            this.barButtonItemAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.barButtonItemAdd.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemAdd.ImageOptions.SvgImage")));
             this.barButtonItemAdd.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemAdd.Name = "barButtonItemAdd";
+            this.barButtonItemAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAdd_ItemClick);
             // 
             // barButtonItemModify
             // 
             this.barButtonItemModify.Caption = "Sửa";
             this.barButtonItemModify.Id = 1;
-            this.barButtonItemModify.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItemModify.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemModify.ImageOptions.SvgImage")));
             this.barButtonItemModify.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemModify.Name = "barButtonItemModify";
+            this.barButtonItemModify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemModify_ItemClick);
             // 
             // barButtonItemDelete
             // 
             this.barButtonItemDelete.Caption = "Xóa";
             this.barButtonItemDelete.Id = 2;
-            this.barButtonItemDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItemDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDelete.ImageOptions.SvgImage")));
             this.barButtonItemDelete.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemDelete.Name = "barButtonItemDelete";
+            this.barButtonItemDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemDelete_ItemClick);
             // 
             // barButtonItemUndo
             // 
             this.barButtonItemUndo.Caption = "Hoàn tác";
             this.barButtonItemUndo.Enabled = false;
             this.barButtonItemUndo.Id = 3;
-            this.barButtonItemUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.barButtonItemUndo.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemUndo.ImageOptions.SvgImage")));
             this.barButtonItemUndo.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemUndo.Name = "barButtonItemUndo";
+            this.barButtonItemUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemUndo_ItemClick);
             // 
             // barButtonItemSave
             // 
             this.barButtonItemSave.Caption = "Lưu";
             this.barButtonItemSave.Id = 4;
-            this.barButtonItemSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.barButtonItemSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSave.ImageOptions.SvgImage")));
             this.barButtonItemSave.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemSave.Name = "barButtonItemSave";
             this.barButtonItemSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItemSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemSave_ItemClick);
             // 
             // barButtonItemCancel
             // 
             this.barButtonItemCancel.Caption = "Hủy";
             this.barButtonItemCancel.Id = 5;
-            this.barButtonItemCancel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
+            this.barButtonItemCancel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancel.ImageOptions.SvgImage")));
             this.barButtonItemCancel.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemCancel.Name = "barButtonItemCancel";
             this.barButtonItemCancel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItemCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCancel_ItemClick);
             // 
             // barButtonItemRefresh
             // 
             this.barButtonItemRefresh.Caption = "Refresh";
             this.barButtonItemRefresh.Id = 6;
-            this.barButtonItemRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
+            this.barButtonItemRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemRefresh.ImageOptions.SvgImage")));
             this.barButtonItemRefresh.ImageOptions.SvgImageSize = new System.Drawing.Size(24, 24);
             this.barButtonItemRefresh.Name = "barButtonItemRefresh";
+            this.barButtonItemRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemRefresh_ItemClick);
             // 
             // bar2
             // 
@@ -351,9 +359,11 @@ namespace BankingManagement
             this.comboBoxBranch.Name = "comboBoxBranch";
             this.comboBoxBranch.Size = new System.Drawing.Size(322, 32);
             this.comboBoxBranch.TabIndex = 0;
+            this.comboBoxBranch.SelectedIndexChanged += new System.EventHandler(this.comboBoxBranch_SelectedIndexChanged);
             // 
             // groupControlInformation
             // 
+            this.groupControlInformation.Controls.Add(this.label5);
             this.groupControlInformation.Controls.Add(this.dateEditDateOfIssue);
             this.groupControlInformation.Controls.Add(this.label4);
             this.groupControlInformation.Controls.Add(this.label3);
@@ -373,7 +383,7 @@ namespace BankingManagement
             this.groupControlInformation.Controls.Add(hOLabel);
             this.groupControlInformation.Controls.Add(this.textBoxFamilyName);
             this.groupControlInformation.Controls.Add(mANVLabel);
-            this.groupControlInformation.Controls.Add(this.textBoxEmployeeID);
+            this.groupControlInformation.Controls.Add(this.textBoxCMND);
             this.groupControlInformation.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupControlInformation.Enabled = false;
             this.groupControlInformation.Location = new System.Drawing.Point(0, 426);
@@ -381,6 +391,16 @@ namespace BankingManagement
             this.groupControlInformation.Size = new System.Drawing.Size(1192, 298);
             this.groupControlInformation.TabIndex = 11;
             this.groupControlInformation.Text = "Thông tin";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(556, 228);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 17);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "*";
             // 
             // dateEditDateOfIssue
             // 
@@ -440,7 +460,7 @@ namespace BankingManagement
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(112, 41);
+            this.label1.Location = new System.Drawing.Point(67, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 17);
             this.label1.TabIndex = 16;
@@ -500,13 +520,13 @@ namespace BankingManagement
             this.textBoxFamilyName.Size = new System.Drawing.Size(246, 23);
             this.textBoxFamilyName.TabIndex = 3;
             // 
-            // textBoxEmployeeID
+            // textBoxCMND
             // 
-            this.textBoxEmployeeID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "CMND", true));
-            this.textBoxEmployeeID.Location = new System.Drawing.Point(29, 61);
-            this.textBoxEmployeeID.Name = "textBoxEmployeeID";
-            this.textBoxEmployeeID.Size = new System.Drawing.Size(359, 23);
-            this.textBoxEmployeeID.TabIndex = 1;
+            this.textBoxCMND.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "CMND", true));
+            this.textBoxCMND.Location = new System.Drawing.Point(29, 61);
+            this.textBoxCMND.Name = "textBoxCMND";
+            this.textBoxCMND.Size = new System.Drawing.Size(359, 23);
+            this.textBoxCMND.TabIndex = 1;
             // 
             // groupControl2
             // 
@@ -693,7 +713,7 @@ namespace BankingManagement
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxFamilyName;
-        private System.Windows.Forms.TextBox textBoxEmployeeID;
+        private System.Windows.Forms.TextBox textBoxCMND;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private System.Windows.Forms.BindingSource khachHangBindingSource;
         private CustomerDataSet customerDataSet;
@@ -709,6 +729,7 @@ namespace BankingManagement
         private DevExpress.XtraGrid.Columns.GridColumn colNGAYCAP;
         private DevExpress.XtraGrid.Columns.GridColumn colSODT;
         private DevExpress.XtraGrid.Columns.GridColumn colMACN;
+        private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.DateEdit dateEditDateOfIssue;
     }
 }
