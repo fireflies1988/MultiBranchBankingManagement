@@ -24,23 +24,14 @@ namespace BankingManagement
 
             if (newEmployeeIDRequired && newEmployeeID == "")
             {
-                MessageBox.Show(this, "Vui lòng nhập mã nhân viên mới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Vui lòng nhập mã nhân viên mới!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // get newBranchID
             try
             {
-                using (SqlConnection connection = Program.GetConnection(subscriberName, Program.RemoteLoginName, Program.RemotePassword))
-                {
-                    String cmdText = "SELECT MACN FROM ChiNhanh";
-                    using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
-                    {
-                        if (reader == null) return;
-                        reader.Read();
-                        newBranchID = reader.GetString(0);
-                    }
-                }
+                newBranchID = Program.GetBranchID(subscriberName, Program.RemoteLoginName, Program.RemotePassword);
             }
             catch (Exception ex)
             {

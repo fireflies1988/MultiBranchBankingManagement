@@ -16,6 +16,18 @@ namespace BankingManagement
             barStaticItemEmployeeID.Caption = Program.EmployeeID;
             barStaticItemEmployeeName.Caption = Program.EmployeeName;
             barStaticItemGroupName.Caption = Program.GroupName;
+            if (Program.GroupName == "NganHang")
+            {
+                ribbonPageTransaction.Visible = false;
+            }
+            try
+            {
+                Program.BranchID = Program.GetBranchID();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void barButtonItemLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -66,6 +78,21 @@ namespace BankingManagement
             else
             {
                 f = new CustomerForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemOpenAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(OpenAccountForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new OpenAccountForm();
                 f.MdiParent = this;
                 f.Show();
             }

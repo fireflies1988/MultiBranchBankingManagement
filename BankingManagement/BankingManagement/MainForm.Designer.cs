@@ -39,9 +39,9 @@ namespace BankingManagement
             this.barButtonItemCreateAccount = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCustomer = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenAccount = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDrawDeposit = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemTransfer = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
@@ -51,7 +51,7 @@ namespace BankingManagement
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageTransaction = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -75,9 +75,9 @@ namespace BankingManagement
             this.barButtonItemCreateAccount,
             this.barButtonItemEmployee,
             this.barButtonItemCustomer,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5,
+            this.barButtonItemOpenAccount,
+            this.barButtonItemDrawDeposit,
+            this.barButtonItemTransfer,
             this.barButtonItem6,
             this.barButtonItem7,
             this.barButtonItem8,
@@ -90,7 +90,7 @@ namespace BankingManagement
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
             this.ribbonPage4,
-            this.ribbonPage3,
+            this.ribbonPageTransaction,
             this.ribbonPage1});
             this.ribbonControl1.Size = new System.Drawing.Size(1223, 193);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
@@ -144,30 +144,36 @@ namespace BankingManagement
             // 
             this.barButtonItemCustomer.Caption = "Khách hàng";
             this.barButtonItemCustomer.Id = 14;
-            this.barButtonItemCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.barButtonItemCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.barButtonItemCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemCustomer.ImageOptions.Image")));
+            this.barButtonItemCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemCustomer.ImageOptions.LargeImage")));
             this.barButtonItemCustomer.Name = "barButtonItemCustomer";
             this.barButtonItemCustomer.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText)));
             this.barButtonItemCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCustomer_ItemClick);
             // 
-            // barButtonItem3
+            // barButtonItemOpenAccount
             // 
-            this.barButtonItem3.Caption = "Mở tài khoản khách hàng";
-            this.barButtonItem3.Id = 15;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemOpenAccount.Caption = "Mở tài khoản khách hàng";
+            this.barButtonItemOpenAccount.Id = 15;
+            this.barButtonItemOpenAccount.ImageOptions.Image = global::BankingManagement.Properties.Resources.atm_card;
+            this.barButtonItemOpenAccount.Name = "barButtonItemOpenAccount";
+            this.barButtonItemOpenAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemOpenAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemOpenAccount_ItemClick);
             // 
-            // barButtonItem4
+            // barButtonItemDrawDeposit
             // 
-            this.barButtonItem4.Caption = "Gởi tiền / Rút tiền";
-            this.barButtonItem4.Id = 16;
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItemDrawDeposit.Caption = "Gởi tiền Rút tiền";
+            this.barButtonItemDrawDeposit.Id = 16;
+            this.barButtonItemDrawDeposit.ImageOptions.Image = global::BankingManagement.Properties.Resources.deposit;
+            this.barButtonItemDrawDeposit.Name = "barButtonItemDrawDeposit";
+            this.barButtonItemDrawDeposit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // barButtonItem5
+            // barButtonItemTransfer
             // 
-            this.barButtonItem5.Caption = "Chuyển tiền";
-            this.barButtonItem5.Id = 17;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItemTransfer.Caption = "Chuyển tiền";
+            this.barButtonItemTransfer.Id = 17;
+            this.barButtonItemTransfer.ImageOptions.Image = global::BankingManagement.Properties.Resources.transfer_money;
+            this.barButtonItemTransfer.Name = "barButtonItemTransfer";
+            this.barButtonItemTransfer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // barButtonItem6
             // 
@@ -227,24 +233,24 @@ namespace BankingManagement
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Cập nhật";
             // 
-            // ribbonPage3
+            // ribbonPageTransaction
             // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageTransaction.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3,
             this.ribbonPageGroup5});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Nghiệp vụ";
+            this.ribbonPageTransaction.Name = "ribbonPageTransaction";
+            this.ribbonPageTransaction.Text = "Nghiệp vụ";
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItemOpenAccount);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItemDrawDeposit);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItemTransfer);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Giao dịch";
             // 
@@ -308,7 +314,7 @@ namespace BankingManagement
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageTransaction;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItemLogout;
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmployeeID;
@@ -317,9 +323,9 @@ namespace BankingManagement
         private DevExpress.XtraBars.BarButtonItem barButtonItemCreateAccount;
         private DevExpress.XtraBars.BarButtonItem barButtonItemEmployee;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCustomer;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenAccount;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDrawDeposit;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemTransfer;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;

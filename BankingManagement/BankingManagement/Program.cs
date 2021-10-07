@@ -11,6 +11,7 @@ namespace BankingManagement
         public const String DatabaseName = "NGANHANG";
         public const String RemoteLoginName = "HTKN";
         public const String RemotePassword = "sa";
+        public const String Subscriber3 = "DESKTOP-9OUV00A\\MSSQLSERVER3";
 
         /// <summary>
         /// This variable is used for saving the data from vw_SubscriberServers for later use.
@@ -23,6 +24,7 @@ namespace BankingManagement
         public static String EmployeeID;
         public static String EmployeeName;
         public static String GroupName;
+        public static String BranchID;
 
         public static LoginForm loginForm;
 
@@ -48,6 +50,9 @@ namespace BankingManagement
             return "Data Source=" + dataSource + ";Initial Catalog=" + Program.DatabaseName + ";User ID=" + userID + ";Password=" + password + ";";
         }
 
+        //
+        // NOTE: DON'T FORGET TO ADD A TRY CATCH STATEMENT TO ALL THESE FUNCTIONS BELOW
+        //
         public static SqlConnection GetConnectionToPublisher()
         {
             SqlConnection connection = new SqlConnection();
@@ -73,16 +78,8 @@ namespace BankingManagement
         {
             SqlDataReader reader;
             SqlCommand cmd = new SqlCommand(cmdText, connection);
-            try
-            {
-                reader = cmd.ExecuteReader();
-                return reader;
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
+            reader = cmd.ExecuteReader();
+            return reader;
         }
 
         public static object GetSPReturnValue(SqlConnection connection, String spName, String param, String value)
@@ -94,5 +91,40 @@ namespace BankingManagement
             cmd.ExecuteNonQuery();
             return cmd.Parameters["@ReturnValue"].Value;
         }
+
+        /// <summary>
+        /// Return the branch id of the branch you logged in.
+        /// </summary>
+        public static String GetBranchID()
+        {
+            using (SqlConnection connection = Program.GetConnectionToSubsciber())
+            {
+                String cmdText = "SELECT MACN FROM ChiNhanh";
+                using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
+                {
+                    reader.Read();
+                    return reader.GetString(0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Return the branch id
+        /// </summary>
+        public static String GetBranchID(String subscriberName, String loginName, String password)
+        {
+            using (SqlConnection connection = Program.GetConnection(subscriberName, loginName, password))
+            {
+                String cmdText = "SELECT MACN FROM ChiNhanh";
+                using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
+                {
+                    reader.Read();
+                    return reader.GetString(0);
+                }
+            }
+        }
+        //
+        //
+        //
     }
 }

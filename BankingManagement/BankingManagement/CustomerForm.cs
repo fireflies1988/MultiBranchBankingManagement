@@ -15,7 +15,6 @@ namespace BankingManagement
     public partial class CustomerForm : DevExpress.XtraEditors.XtraForm
     {
         private Stack<String> undoList = new Stack<string>();
-        private String branchID;
         /// <summary>
         /// Store the index of the item before adding or editing for cancel, undo purpose.
         /// </summary>
@@ -45,33 +44,6 @@ namespace BankingManagement
         {
             // TODO: This line of code loads data into the 'customerDataSet.KhachHang' table. You can move, or remove it, as needed.
             FillDataSet(Program.GetConnectionString(Program.SubscriberName, Program.LoginName, Program.Password));
-
-            // Index was out of range. Remember to catch is this error (Already catched)
-            // save branchID
-            if (khachHangBindingSource.Count == 0)
-            {
-                try
-                {
-                    using (SqlConnection connection = Program.GetConnectionToSubsciber())
-                    {
-                        String cmdText = "SELECT MACN FROM ChiNhanh";
-                        using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
-                        {
-                            if (reader == null) return;
-                            reader.Read();
-                            branchID = reader.GetString(0);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                branchID = ((DataRowView)khachHangBindingSource[0])["MACN"].ToString();
-            }
 
             // load data into branch comboBox
             // remove the eventHandler for the selectedIndexchanged to prevent it from being fired when comboBoxBranch datasource is bound for the first time
@@ -156,7 +128,7 @@ namespace BankingManagement
         {
             position = khachHangBindingSource.Position;
             khachHangBindingSource.AddNew();
-            textBoxBranchID.Text = branchID;
+            textBoxBranchID.Text = Program.BranchID;
             comboBoxSex.SelectedIndex = 0;
             comboBoxSex.Text = comboBoxSex.SelectedText;
             ChangeFormAppearanceWhenAddingOrEditing(true);

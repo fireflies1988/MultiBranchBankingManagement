@@ -64,7 +64,6 @@ namespace BankingManagement
                     String cmdText = "EXEC sp_Login_GetEmployeeInfo @LoginName = '" + Program.LoginName + "'";
                     using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
                     {
-                        if (reader == null) return;
                         reader.Read();
                         Program.EmployeeID = reader.GetString(0);
                         Program.EmployeeName = reader.GetString(1);
@@ -79,7 +78,7 @@ namespace BankingManagement
             }
             catch (Exception ex) // for sa
             {
-                MessageBox.Show(this, ex.Message + "\n" + ex.StackTrace, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, ex.Message + "\n" + ex.StackTrace, "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
