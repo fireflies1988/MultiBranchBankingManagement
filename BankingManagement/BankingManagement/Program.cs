@@ -19,6 +19,7 @@ namespace BankingManagement
         public static BindingSource Subscribers = new BindingSource();
         public static int SelectedBranchIndex;
         public static String SubscriberName;
+        public static String SubscriberDescription;
         public static String LoginName;
         public static String Password;
         public static String EmployeeID;
@@ -121,6 +122,25 @@ namespace BankingManagement
                     reader.Read();
                     return reader.GetString(0);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Create a DataTable from a query
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static DataTable CreateDataTable(String cmd, String connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = connectionString;
+                connection.Open();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd, connection);
+                sda.Fill(dt);
+                return dt;
             }
         }
         //

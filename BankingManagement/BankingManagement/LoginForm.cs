@@ -21,13 +21,9 @@ namespace BankingManagement
         {
             try
             {
-                using (SqlConnection connection = Program.GetConnectionToPublisher())
-                {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM vw_SubscriberServers", connection);
-                    sda.Fill(dt);
-                    Program.Subscribers.DataSource = dt;
-                }
+                String connectionString = Program.GetConnectionString(Program.PublisherName);
+                DataTable dt = Program.CreateDataTable("SELECT * FROM vw_SubscriberServers", connectionString);
+                Program.Subscribers.DataSource = dt;
                 comboBoxBranch.DataSource = Program.Subscribers;
                 comboBoxBranch.DisplayMember = "TENCN";
                 comboBoxBranch.ValueMember = "TENSERVER";
@@ -56,6 +52,10 @@ namespace BankingManagement
             Program.SelectedBranchIndex = comboBoxBranch.SelectedIndex;
             Program.LoginName = textBoxLoginName.Text;
             Program.Password = textBoxPassword.Text;
+
+            // for creating login
+            DataRowView rowView = comboBoxBranch.SelectedItem as DataRowView;
+            Program.SubscriberDescription = rowView["TENCN"].ToString();
 
             try
             {

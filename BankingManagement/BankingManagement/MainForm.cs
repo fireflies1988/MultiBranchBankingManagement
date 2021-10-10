@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace BankingManagement
@@ -32,6 +33,17 @@ namespace BankingManagement
 
         private void barButtonItemLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+                using (SqlConnection connection = Program.GetConnectionToSubsciber())
+                {
+                    SqlConnection.ClearPool(connection);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Dispose();
             Program.loginForm.Show();
         }
@@ -93,6 +105,21 @@ namespace BankingManagement
             else
             {
                 f = new OpenAccountForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemCreateLoginAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(CreateLoginForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new CreateLoginForm();
                 f.MdiParent = this;
                 f.Show();
             }

@@ -36,7 +36,7 @@ namespace BankingManagement
             this.barStaticItemEmployeeName = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemGroupName = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemLogout = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemCreateAccount = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCreateLoginAccount = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpenAccount = new DevExpress.XtraBars.BarButtonItem();
@@ -72,7 +72,7 @@ namespace BankingManagement
             this.barStaticItemEmployeeName,
             this.barStaticItemGroupName,
             this.barButtonItemLogout,
-            this.barButtonItemCreateAccount,
+            this.barButtonItemCreateLoginAccount,
             this.barButtonItemEmployee,
             this.barButtonItemCustomer,
             this.barButtonItemOpenAccount,
@@ -121,14 +121,15 @@ namespace BankingManagement
             this.barButtonItemLogout.Name = "barButtonItemLogout";
             this.barButtonItemLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemLogout_ItemClick);
             // 
-            // barButtonItemCreateAccount
+            // barButtonItemCreateLoginAccount
             // 
-            this.barButtonItemCreateAccount.Caption = "Tạo tài khoản";
-            this.barButtonItemCreateAccount.Id = 12;
-            this.barButtonItemCreateAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemCreateAccount.ImageOptions.Image")));
-            this.barButtonItemCreateAccount.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemCreateAccount.ImageOptions.LargeImage")));
-            this.barButtonItemCreateAccount.Name = "barButtonItemCreateAccount";
-            this.barButtonItemCreateAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemCreateLoginAccount.Caption = "Tạo tài khoản";
+            this.barButtonItemCreateLoginAccount.Id = 12;
+            this.barButtonItemCreateLoginAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemCreateAccount.ImageOptions.Image")));
+            this.barButtonItemCreateLoginAccount.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItemCreateAccount.ImageOptions.LargeImage")));
+            this.barButtonItemCreateLoginAccount.Name = "barButtonItemCreateLoginAccount";
+            this.barButtonItemCreateLoginAccount.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.barButtonItemCreateLoginAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemCreateLoginAccount_ItemClick);
             // 
             // barButtonItemEmployee
             // 
@@ -214,7 +215,7 @@ namespace BankingManagement
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemCreateAccount);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemCreateLoginAccount);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemLogout);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "ribbonPageGroup2";
@@ -320,7 +321,7 @@ namespace BankingManagement
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmployeeID;
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmployeeName;
         private DevExpress.XtraBars.BarStaticItem barStaticItemGroupName;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemCreateAccount;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCreateLoginAccount;
         private DevExpress.XtraBars.BarButtonItem barButtonItemEmployee;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCustomer;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenAccount;
