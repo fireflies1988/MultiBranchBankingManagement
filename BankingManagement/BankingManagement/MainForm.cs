@@ -142,7 +142,17 @@ namespace BankingManagement
 
         private void barButtonItemTransfer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Form f = CheckExists(typeof(TransferMoneyForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new TransferMoneyForm();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }

@@ -51,12 +51,12 @@ namespace BankingManagement
             this.panelAccountOwner = new System.Windows.Forms.Panel();
             this.textBoxCMND = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxAccountOwner = new System.Windows.Forms.TextBox();
+            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
             sOTKLabel = new System.Windows.Forms.Label();
             sOTIENLabel = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
@@ -69,8 +69,8 @@ namespace BankingManagement
             this.panel3.SuspendLayout();
             this.panelAccountOwner.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).BeginInit();
             this.SuspendLayout();
             // 
             // sOTKLabel
@@ -285,18 +285,6 @@ namespace BankingManagement
             this.panel2.Size = new System.Drawing.Size(514, 147);
             this.panel2.TabIndex = 8;
             // 
-            // pictureBoxCheck
-            // 
-            this.pictureBoxCheck.Image = global::BankingManagement.Properties.Resources.check;
-            this.pictureBoxCheck.Location = new System.Drawing.Point(473, 109);
-            this.pictureBoxCheck.Name = "pictureBoxCheck";
-            this.pictureBoxCheck.Size = new System.Drawing.Size(31, 28);
-            this.pictureBoxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCheck.TabIndex = 9;
-            this.pictureBoxCheck.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxCheck, "Xác thực thành công");
-            this.pictureBoxCheck.Visible = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -342,6 +330,18 @@ namespace BankingManagement
             label6.TabIndex = 11;
             label6.Text = "Chủ tài khoản";
             // 
+            // pictureBoxCheck
+            // 
+            this.pictureBoxCheck.Image = global::BankingManagement.Properties.Resources.check;
+            this.pictureBoxCheck.Location = new System.Drawing.Point(473, 109);
+            this.pictureBoxCheck.Name = "pictureBoxCheck";
+            this.pictureBoxCheck.Size = new System.Drawing.Size(31, 28);
+            this.pictureBoxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCheck.TabIndex = 9;
+            this.pictureBoxCheck.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxCheck, "Xác thực thành công");
+            this.pictureBoxCheck.Visible = false;
+            // 
             // DepositWithdrawForm
             // 
             this.Appearance.Options.UseFont = true;
@@ -365,8 +365,8 @@ namespace BankingManagement
             this.panelAccountOwner.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).EndInit();
             this.ResumeLayout(false);
 
         }

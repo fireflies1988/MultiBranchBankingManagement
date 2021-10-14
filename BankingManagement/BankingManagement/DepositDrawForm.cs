@@ -92,7 +92,7 @@ namespace BankingManagement
             {
                 using (SqlConnection connection = Program.GetConnectionToSubsciber())
                 {
-                    String cmdText = "EXEC sp_GdGoiRut_FindCustomerInfoByAccountNumber @SOTK = '" + textBoxAccountNumber.Text + "'";
+                    String cmdText = "EXEC sp_GD_FindCustomerInfoByAccountNumber @SOTK = '" + textBoxAccountNumber.Text + "'";
                     using (SqlDataReader reader = Program.CreateDataReader(connection, cmdText))
                     {
                         reader.Read();
