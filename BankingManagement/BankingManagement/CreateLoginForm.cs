@@ -16,6 +16,18 @@ namespace BankingManagement
             InitializeComponent();
         }
 
+        private void loadDataIntoEmployeeComboBox()
+        {
+            String connectionString = Program.GetConnectionString(Program.SubscriberName, Program.LoginName, Program.Password);
+            DataTable dt = Program.CreateDataTable("SELECT * FROM vw_EmployeesWithoutLogins", connectionString);
+            comboBoxEmployee.DataSource = dt;
+            comboBoxEmployee.DisplayMember = "HOTEN";
+            comboBoxEmployee.ValueMember = "MANV";
+
+            // display cue message
+            comboBoxEmployee.SelectedItem = null;
+            SendMessage(this.comboBoxEmployee.Handle, CB_SETCUEBANNER, 0, "Vui lòng chọn nhân viên");
+        }
         private void loadData()
         {
             textBoxLoginName.Text = "";
@@ -25,21 +37,13 @@ namespace BankingManagement
             ActiveControl = textBoxLoginName;
             try
             {
-                String connectionString = Program.GetConnectionString(Program.SubscriberName, Program.LoginName, Program.Password);
-                DataTable dt = Program.CreateDataTable("SELECT * FROM vw_EmployeesWithoutLogins", connectionString);
-                comboBoxEmployee.DataSource = dt;
-                comboBoxEmployee.DisplayMember = "HOTEN";
-                comboBoxEmployee.ValueMember = "MANV";
+                loadDataIntoEmployeeComboBox();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // display cue message
-            comboBoxEmployee.SelectedItem = null;
-            SendMessage(this.comboBoxEmployee.Handle, CB_SETCUEBANNER, 0, "Vui lòng chọn nhân viên");
         }
 
         private void CreateLoginForm_Load(object sender, EventArgs e)
@@ -81,6 +85,19 @@ namespace BankingManagement
             catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void simpleButtonRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                loadDataIntoEmployeeComboBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

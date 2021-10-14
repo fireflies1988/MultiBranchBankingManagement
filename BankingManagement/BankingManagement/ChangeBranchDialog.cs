@@ -60,28 +60,43 @@ namespace BankingManagement
                         }
 
                         // change branch
-                        SqlCommand cmd = new SqlCommand("sp_NhanVien_ChangeBranch", connection);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@OldEmployeeID", SqlDbType.NChar).Value = oldEmployeeID;
-                        cmd.Parameters.Add("@NewEmployeeID", SqlDbType.NChar).Value = newEmployeeID;
-                        cmd.Parameters.Add("@NewBranchID", SqlDbType.NChar).Value = newBranchID;
-                        cmd.ExecuteNonQuery();
+                        if (MessageBox.Show(this, "Việc chuyển chi nhánh sẽ xóa luôn login của người này (Nếu có), bạn có chắc muốn thực hiện điều này?", "Chuyển chi nhánh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            SqlCommand cmd = new SqlCommand("sp_NhanVien_ChangeBranch", connection);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@OldEmployeeID", SqlDbType.NChar).Value = oldEmployeeID;
+                            cmd.Parameters.Add("@NewEmployeeID", SqlDbType.NChar).Value = newEmployeeID;
+                            cmd.Parameters.Add("@NewBranchID", SqlDbType.NChar).Value = newBranchID;
+                            cmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            return;
+                        }
                     } 
                     else
                     {
-                        SqlCommand cmd = new SqlCommand("sp_NhanVien_ChangeBranch", connection);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@OldEmployeeID", SqlDbType.NChar).Value = oldEmployeeID;
-                        cmd.Parameters.Add("@NewBranchID", SqlDbType.NChar).Value = newBranchID;
-                        cmd.ExecuteNonQuery();
+                        // change branch
+                        if (MessageBox.Show(this, "Việc chuyển chi nhánh sẽ xóa luôn login của người này (Nếu có), bạn có chắc muốn thực hiện điều này?", "Chuyển chi nhánh", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            SqlCommand cmd = new SqlCommand("sp_NhanVien_ChangeBranch", connection);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@OldEmployeeID", SqlDbType.NChar).Value = oldEmployeeID;
+                            cmd.Parameters.Add("@NewBranchID", SqlDbType.NChar).Value = newBranchID;
+                            cmd.ExecuteNonQuery();
+                        } 
+                        else
+                        {
+                            return;
+                        }
                     }
-                    MessageBox.Show(this, "Chuyển chi nhánh thành công", "Chuyển chi nhánh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Chuyển chi nhánh thành công.", "Chuyển chi nhánh", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Chuyển chi nhánh không thành công!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

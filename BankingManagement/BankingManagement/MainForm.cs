@@ -124,5 +124,25 @@ namespace BankingManagement
                 f.Show();
             }
         }
+
+        private void barButtonItemWithdrawDeposit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(DepositWithdrawForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new DepositWithdrawForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemTransfer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

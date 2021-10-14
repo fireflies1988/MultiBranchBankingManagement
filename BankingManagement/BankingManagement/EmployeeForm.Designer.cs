@@ -430,7 +430,6 @@ namespace BankingManagement
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.GD_CHUYENTIENTableAdapter = null;
-            this.tableAdapterManager.GD_GOIRUTTableAdapter = null;
             this.tableAdapterManager.NhanVienTableAdapter = this.nhanVienTableAdapter;
             this.tableAdapterManager.UpdateOrder = BankingManagement.BankDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 

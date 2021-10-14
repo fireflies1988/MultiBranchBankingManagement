@@ -7,7 +7,7 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="-10" ViewPortY="51" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:GD_CHUYENTIEN" ZOrder="5" X="377" Y="70" Height="250" Width="291" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
-    <Shape ID="DesignTable:GD_GOIRUT" ZOrder="4" X="377" Y="390" Height="250" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
+    <Shape ID="DesignTable:GD_GOIRUT" ZOrder="4" X="378" Y="390" Height="250" Width="252" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="191" />
     <Shape ID="DesignTable:NhanVien" ZOrder="1" X="70" Y="70" Height="296" Width="237" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="214" />
   </Shapes>
   <Connectors>
@@ -34,7 +34,7 @@
           <Y>407</Y>
         </Point>
         <Point>
-          <X>377</X>
+          <X>378</X>
           <Y>407</Y>
         </Point>
       </RoutePoints>

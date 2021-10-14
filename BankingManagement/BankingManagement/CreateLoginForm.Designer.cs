@@ -29,6 +29,8 @@ namespace BankingManagement
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateLoginForm));
             this.textBoxBranch = new System.Windows.Forms.TextBox();
             this.comboBoxEmployee = new System.Windows.Forms.ComboBox();
             this.textBoxGroupName = new System.Windows.Forms.TextBox();
@@ -40,6 +42,8 @@ namespace BankingManagement
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonCreate = new System.Windows.Forms.Button();
+            this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -160,11 +164,24 @@ namespace BankingManagement
             this.buttonCreate.UseVisualStyleBackColor = false;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
+            // simpleButtonRefresh
+            // 
+            this.simpleButtonRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.simpleButtonRefresh.Location = new System.Drawing.Point(438, 143);
+            this.simpleButtonRefresh.Name = "simpleButtonRefresh";
+            this.simpleButtonRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+            this.simpleButtonRefresh.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            this.simpleButtonRefresh.Size = new System.Drawing.Size(46, 36);
+            this.simpleButtonRefresh.TabIndex = 15;
+            this.simpleButtonRefresh.ToolTip = "Refresh the combo box\'s data";
+            this.simpleButtonRefresh.Click += new System.EventHandler(this.simpleButtonRefresh_Click);
+            // 
             // CreateLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 617);
+            this.Controls.Add(this.simpleButtonRefresh);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.textBoxPassword);
@@ -202,5 +219,7 @@ namespace BankingManagement
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonCreate;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonRefresh;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
