@@ -37,7 +37,6 @@ namespace BankingManagement
             System.Windows.Forms.Label nGAYMOTKLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpenAccountForm));
             this.groupControlAccountInfo = new DevExpress.XtraEditors.GroupControl();
-            this.dateEditOpenDate = new DevExpress.XtraEditors.DateEdit();
             this.taiKhoanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.accountDataSet = new BankingManagement.AccountDataSet();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -73,6 +72,7 @@ namespace BankingManagement
             this.colNGAYCAP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dateTimePickerOpenDate = new System.Windows.Forms.DateTimePicker();
             cMNDLabel = new System.Windows.Forms.Label();
             sOTKLabel = new System.Windows.Forms.Label();
             sODULabel = new System.Windows.Forms.Label();
@@ -80,8 +80,6 @@ namespace BankingManagement
             nGAYMOTKLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAccountInfo)).BeginInit();
             this.groupControlAccountInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditOpenDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditOpenDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taiKhoanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -139,7 +137,7 @@ namespace BankingManagement
             // 
             // groupControlAccountInfo
             // 
-            this.groupControlAccountInfo.Controls.Add(this.dateEditOpenDate);
+            this.groupControlAccountInfo.Controls.Add(this.dateTimePickerOpenDate);
             this.groupControlAccountInfo.Controls.Add(this.label9);
             this.groupControlAccountInfo.Controls.Add(this.label8);
             this.groupControlAccountInfo.Controls.Add(nGAYMOTKLabel);
@@ -152,26 +150,12 @@ namespace BankingManagement
             this.groupControlAccountInfo.Controls.Add(cMNDLabel);
             this.groupControlAccountInfo.Controls.Add(this.textBoxCMND);
             this.groupControlAccountInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControlAccountInfo.Location = new System.Drawing.Point(0, 412);
+            this.groupControlAccountInfo.Location = new System.Drawing.Point(0, 395);
             this.groupControlAccountInfo.Name = "groupControlAccountInfo";
             this.groupControlAccountInfo.Size = new System.Drawing.Size(1149, 247);
             this.groupControlAccountInfo.TabIndex = 4;
             this.groupControlAccountInfo.Text = "Thông tin tài khoản";
             this.groupControlAccountInfo.Visible = false;
-            // 
-            // dateEditOpenDate
-            // 
-            this.dateEditOpenDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.taiKhoanBindingSource, "NGAYMOTK", true));
-            this.dateEditOpenDate.EditValue = null;
-            this.dateEditOpenDate.Location = new System.Drawing.Point(498, 130);
-            this.dateEditOpenDate.MenuManager = this.barManager1;
-            this.dateEditOpenDate.Name = "dateEditOpenDate";
-            this.dateEditOpenDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditOpenDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditOpenDate.Size = new System.Drawing.Size(230, 22);
-            this.dateEditOpenDate.TabIndex = 25;
             // 
             // taiKhoanBindingSource
             // 
@@ -290,7 +274,7 @@ namespace BankingManagement
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 659);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 642);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1149, 20);
             // 
@@ -300,7 +284,7 @@ namespace BankingManagement
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 71);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 571);
             // 
             // barDockControlRight
             // 
@@ -308,7 +292,7 @@ namespace BankingManagement
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1149, 71);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 571);
             // 
             // label9
             // 
@@ -393,7 +377,7 @@ namespace BankingManagement
             this.groupControlCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlCustomer.Location = new System.Drawing.Point(0, 71);
             this.groupControlCustomer.Name = "groupControlCustomer";
-            this.groupControlCustomer.Size = new System.Drawing.Size(1149, 341);
+            this.groupControlCustomer.Size = new System.Drawing.Size(1149, 324);
             this.groupControlCustomer.TabIndex = 9;
             this.groupControlCustomer.Text = "Khách hàng";
             // 
@@ -405,7 +389,7 @@ namespace BankingManagement
             this.khachHangGridControl.MainView = this.gridView1;
             this.khachHangGridControl.MenuManager = this.barManager1;
             this.khachHangGridControl.Name = "khachHangGridControl";
-            this.khachHangGridControl.Size = new System.Drawing.Size(1145, 311);
+            this.khachHangGridControl.Size = new System.Drawing.Size(1145, 294);
             this.khachHangGridControl.TabIndex = 0;
             this.khachHangGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -488,12 +472,23 @@ namespace BankingManagement
             this.colMACN.VisibleIndex = 6;
             this.colMACN.Width = 94;
             // 
+            // dateTimePickerOpenDate
+            // 
+            this.dateTimePickerOpenDate.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            this.dateTimePickerOpenDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taiKhoanBindingSource, "NGAYMOTK", true));
+            this.dateTimePickerOpenDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerOpenDate.Location = new System.Drawing.Point(498, 130);
+            this.dateTimePickerOpenDate.Name = "dateTimePickerOpenDate";
+            this.dateTimePickerOpenDate.Size = new System.Drawing.Size(346, 23);
+            this.dateTimePickerOpenDate.TabIndex = 26;
+            this.dateTimePickerOpenDate.Value = new System.DateTime(2021, 11, 28, 0, 10, 26, 0);
+            // 
             // OpenAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1149, 679);
+            this.ClientSize = new System.Drawing.Size(1149, 662);
             this.Controls.Add(this.groupControlCustomer);
             this.Controls.Add(this.groupControlAccountInfo);
             this.Controls.Add(this.barDockControlLeft);
@@ -506,8 +501,6 @@ namespace BankingManagement
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAccountInfo)).EndInit();
             this.groupControlAccountInfo.ResumeLayout(false);
             this.groupControlAccountInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditOpenDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditOpenDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taiKhoanBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -544,7 +537,6 @@ namespace BankingManagement
         private System.Windows.Forms.TextBox textBoxCMND;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private DevExpress.XtraEditors.DateEdit dateEditOpenDate;
         private System.Windows.Forms.BindingSource khachHangBindingSource;
         private AccountDataSetTableAdapters.KhachHangTableAdapter khachHangTableAdapter;
         private DevExpress.XtraEditors.GroupControl groupControlCustomer;
@@ -560,5 +552,6 @@ namespace BankingManagement
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenAccount;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRefresh;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerOpenDate;
     }
 }

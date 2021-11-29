@@ -1,13 +1,6 @@
-﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankingManagement
@@ -28,6 +21,8 @@ namespace BankingManagement
             // TODO: This line of code loads data into the 'accountDataSet.TaiKhoan' table. You can move, or remove it, as needed.
             this.taiKhoanTableAdapter.Connection.ConnectionString = Program.GetConnectionString(Program.SubscriberName, Program.LoginName, Program.Password);
             this.taiKhoanTableAdapter.Fill(this.accountDataSet.TaiKhoan);
+
+            dateTimePickerOpenDate.Value = DateTime.Now;
         }
 
         private void RefreshDataSet()
@@ -60,6 +55,7 @@ namespace BankingManagement
             taiKhoanBindingSource.AddNew();
             textBoxBranchID.Text = Program.BranchID;
             textBoxCMND.Text = ((DataRowView)khachHangBindingSource.Current)["CMND"].ToString();
+            dateTimePickerOpenDate.Value = DateTime.Now;
         }
 
         private void barButtonItemCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

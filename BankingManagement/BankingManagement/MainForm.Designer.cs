@@ -43,10 +43,12 @@ namespace BankingManagement
             this.barButtonItemWithdrawDeposit = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTransfer = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemListOfAccountsOpened = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemListOfCustomersByBranch = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemAccountStatement = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -58,6 +60,8 @@ namespace BankingManagement
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -79,13 +83,15 @@ namespace BankingManagement
             this.barButtonItemWithdrawDeposit,
             this.barButtonItemTransfer,
             this.barButtonItem6,
-            this.barButtonItem7,
+            this.barButtonItemListOfAccountsOpened,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barButtonItemListOfCustomersByBranch,
+            this.barButtonItemAccountStatement});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 23;
+            this.ribbonControl1.MaxItemId = 25;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
@@ -184,11 +190,13 @@ namespace BankingManagement
             this.barButtonItem6.Id = 18;
             this.barButtonItem6.Name = "barButtonItem6";
             // 
-            // barButtonItem7
+            // barButtonItemListOfAccountsOpened
             // 
-            this.barButtonItem7.Caption = "Danh sách các tài khoản mở";
-            this.barButtonItem7.Id = 19;
-            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItemListOfAccountsOpened.Caption = "Danh sách tài khoản mở";
+            this.barButtonItemListOfAccountsOpened.Id = 19;
+            this.barButtonItemListOfAccountsOpened.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemListOfAccountsOpened.ImageOptions.SvgImage")));
+            this.barButtonItemListOfAccountsOpened.Name = "barButtonItemListOfAccountsOpened";
+            this.barButtonItemListOfAccountsOpened.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemListOfAccountsOpened_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -208,6 +216,24 @@ namespace BankingManagement
             this.barButtonItem10.Id = 22;
             this.barButtonItem10.Name = "barButtonItem10";
             // 
+            // barButtonItemListOfCustomersByBranch
+            // 
+            this.barButtonItemListOfCustomersByBranch.Caption = "Danh sách khách hàng theo chi nhánh";
+            this.barButtonItemListOfCustomersByBranch.Id = 23;
+            this.barButtonItemListOfCustomersByBranch.ImageOptions.Image = global::BankingManagement.Properties.Resources.list;
+            this.barButtonItemListOfCustomersByBranch.Name = "barButtonItemListOfCustomersByBranch";
+            this.barButtonItemListOfCustomersByBranch.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemListOfCustomersByBranch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemListOfCustomersByBranch_ItemClick);
+            // 
+            // barButtonItemAccountStatement
+            // 
+            this.barButtonItemAccountStatement.Caption = "Sao kê giao dịch của một tài khoản";
+            this.barButtonItemAccountStatement.Id = 24;
+            this.barButtonItemAccountStatement.ImageOptions.Image = global::BankingManagement.Properties.Resources.transaction_history;
+            this.barButtonItemAccountStatement.Name = "barButtonItemAccountStatement";
+            this.barButtonItemAccountStatement.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItemAccountStatement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAccountStatement_ItemClick);
+            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -220,7 +246,7 @@ namespace BankingManagement
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemCreateLoginAccount);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemLogout);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Khác";
             // 
             // ribbonPage4
             // 
@@ -248,7 +274,6 @@ namespace BankingManagement
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItemOpenAccount);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPageGroup5
             // 
@@ -266,11 +291,12 @@ namespace BankingManagement
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem7);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem8);
+            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemAccountStatement);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemListOfAccountsOpened);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemListOfCustomersByBranch);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Thống kê";
             // 
             // ribbonStatusBar1
             // 
@@ -285,6 +311,14 @@ namespace BankingManagement
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
             // MainForm
             // 
@@ -330,7 +364,7 @@ namespace BankingManagement
         private DevExpress.XtraBars.BarButtonItem barButtonItemWithdrawDeposit;
         private DevExpress.XtraBars.BarButtonItem barButtonItemTransfer;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemListOfAccountsOpened;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
@@ -338,6 +372,10 @@ namespace BankingManagement
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemListOfCustomersByBranch;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemAccountStatement;
     }
 }
 

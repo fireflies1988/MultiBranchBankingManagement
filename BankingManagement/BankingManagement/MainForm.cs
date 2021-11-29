@@ -154,5 +154,50 @@ namespace BankingManagement
                 f.Show();
             }
         }
+
+        private void barButtonItemListOfAccountsOpened_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(ListOfAccountsOpenedForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new ListOfAccountsOpenedForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemListOfCustomersByBranch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(ListOfCustomersByBranchForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new ListOfCustomersByBranchForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItemAccountStatement_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(AccountStatementForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new AccountStatementForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

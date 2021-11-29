@@ -66,7 +66,6 @@ namespace BankingManagement
             this.dateTimePickerTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             label2 = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
@@ -90,7 +89,6 @@ namespace BankingManagement
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -496,7 +494,6 @@ namespace BankingManagement
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,7 +527,6 @@ namespace BankingManagement
         private System.Windows.Forms.DateTimePicker dateTimePickerTransactionDate;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }
