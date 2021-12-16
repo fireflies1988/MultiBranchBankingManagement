@@ -37,8 +37,14 @@ namespace BankingManagement
             System.Windows.Forms.Label nGAYMOTKLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpenAccountForm));
             this.groupControlAccountInfo = new DevExpress.XtraEditors.GroupControl();
+            this.dateTimePickerOpenDate = new System.Windows.Forms.DateTimePicker();
             this.taiKhoanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.accountDataSet = new BankingManagement.AccountDataSet();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxBranchID = new System.Windows.Forms.TextBox();
+            this.textBoxAccountNumber = new System.Windows.Forms.TextBox();
+            this.textBoxCMND = new System.Windows.Forms.TextBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItemOpenAccount = new DevExpress.XtraBars.BarButtonItem();
@@ -51,12 +57,6 @@ namespace BankingManagement
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxBranchID = new System.Windows.Forms.TextBox();
-            this.textBoxBalance = new System.Windows.Forms.TextBox();
-            this.textBoxAccountNumber = new System.Windows.Forms.TextBox();
-            this.textBoxCMND = new System.Windows.Forms.TextBox();
             this.taiKhoanTableAdapter = new BankingManagement.AccountDataSetTableAdapters.TaiKhoanTableAdapter();
             this.tableAdapterManager = new BankingManagement.AccountDataSetTableAdapters.TableAdapterManager();
             this.khachHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -72,7 +72,8 @@ namespace BankingManagement
             this.colNGAYCAP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMACN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dateTimePickerOpenDate = new System.Windows.Forms.DateTimePicker();
+            this.buttonChangeAccountNumber = new System.Windows.Forms.Button();
+            this.numericUpDownBalance = new System.Windows.Forms.NumericUpDown();
             cMNDLabel = new System.Windows.Forms.Label();
             sOTKLabel = new System.Windows.Forms.Label();
             sODULabel = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@ namespace BankingManagement
             this.groupControlCustomer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.khachHangGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBalance)).BeginInit();
             this.SuspendLayout();
             // 
             // cMNDLabel
@@ -137,6 +139,8 @@ namespace BankingManagement
             // 
             // groupControlAccountInfo
             // 
+            this.groupControlAccountInfo.Controls.Add(this.numericUpDownBalance);
+            this.groupControlAccountInfo.Controls.Add(this.buttonChangeAccountNumber);
             this.groupControlAccountInfo.Controls.Add(this.dateTimePickerOpenDate);
             this.groupControlAccountInfo.Controls.Add(this.label9);
             this.groupControlAccountInfo.Controls.Add(this.label8);
@@ -144,7 +148,6 @@ namespace BankingManagement
             this.groupControlAccountInfo.Controls.Add(mACNLabel);
             this.groupControlAccountInfo.Controls.Add(this.textBoxBranchID);
             this.groupControlAccountInfo.Controls.Add(sODULabel);
-            this.groupControlAccountInfo.Controls.Add(this.textBoxBalance);
             this.groupControlAccountInfo.Controls.Add(sOTKLabel);
             this.groupControlAccountInfo.Controls.Add(this.textBoxAccountNumber);
             this.groupControlAccountInfo.Controls.Add(cMNDLabel);
@@ -157,6 +160,17 @@ namespace BankingManagement
             this.groupControlAccountInfo.Text = "Thông tin tài khoản";
             this.groupControlAccountInfo.Visible = false;
             // 
+            // dateTimePickerOpenDate
+            // 
+            this.dateTimePickerOpenDate.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
+            this.dateTimePickerOpenDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taiKhoanBindingSource, "NGAYMOTK", true));
+            this.dateTimePickerOpenDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerOpenDate.Location = new System.Drawing.Point(498, 130);
+            this.dateTimePickerOpenDate.Name = "dateTimePickerOpenDate";
+            this.dateTimePickerOpenDate.Size = new System.Drawing.Size(346, 23);
+            this.dateTimePickerOpenDate.TabIndex = 26;
+            this.dateTimePickerOpenDate.Value = new System.DateTime(2021, 11, 28, 0, 10, 26, 0);
+            // 
             // taiKhoanBindingSource
             // 
             this.taiKhoanBindingSource.DataMember = "TaiKhoan";
@@ -166,6 +180,56 @@ namespace BankingManagement
             // 
             this.accountDataSet.DataSetName = "AccountDataSet";
             this.accountDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(73, 176);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(16, 17);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "*";
+            this.toolTip1.SetToolTip(this.label9, "Không được để trống");
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(110, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 17);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "*";
+            this.toolTip1.SetToolTip(this.label8, "Không được để trống");
+            // 
+            // textBoxBranchID
+            // 
+            this.textBoxBranchID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "MACN", true));
+            this.textBoxBranchID.Location = new System.Drawing.Point(498, 64);
+            this.textBoxBranchID.Name = "textBoxBranchID";
+            this.textBoxBranchID.ReadOnly = true;
+            this.textBoxBranchID.Size = new System.Drawing.Size(404, 23);
+            this.textBoxBranchID.TabIndex = 7;
+            // 
+            // textBoxAccountNumber
+            // 
+            this.textBoxAccountNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "SOTK", true));
+            this.textBoxAccountNumber.Location = new System.Drawing.Point(34, 130);
+            this.textBoxAccountNumber.MaxLength = 9;
+            this.textBoxAccountNumber.Name = "textBoxAccountNumber";
+            this.textBoxAccountNumber.Size = new System.Drawing.Size(354, 23);
+            this.textBoxAccountNumber.TabIndex = 3;
+            this.textBoxAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAccountNumber_KeyPress);
+            // 
+            // textBoxCMND
+            // 
+            this.textBoxCMND.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "CMND", true));
+            this.textBoxCMND.Location = new System.Drawing.Point(34, 64);
+            this.textBoxCMND.Name = "textBoxCMND";
+            this.textBoxCMND.ReadOnly = true;
+            this.textBoxCMND.Size = new System.Drawing.Size(354, 23);
+            this.textBoxCMND.TabIndex = 1;
             // 
             // barManager1
             // 
@@ -294,63 +358,6 @@ namespace BankingManagement
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 571);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(73, 176);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 17);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "*";
-            this.toolTip1.SetToolTip(this.label9, "Không được để trống");
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(110, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 17);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "*";
-            this.toolTip1.SetToolTip(this.label8, "Không được để trống");
-            // 
-            // textBoxBranchID
-            // 
-            this.textBoxBranchID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "MACN", true));
-            this.textBoxBranchID.Location = new System.Drawing.Point(498, 64);
-            this.textBoxBranchID.Name = "textBoxBranchID";
-            this.textBoxBranchID.ReadOnly = true;
-            this.textBoxBranchID.Size = new System.Drawing.Size(404, 23);
-            this.textBoxBranchID.TabIndex = 7;
-            // 
-            // textBoxBalance
-            // 
-            this.textBoxBalance.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "SODU", true));
-            this.textBoxBalance.Location = new System.Drawing.Point(34, 196);
-            this.textBoxBalance.Name = "textBoxBalance";
-            this.textBoxBalance.Size = new System.Drawing.Size(222, 23);
-            this.textBoxBalance.TabIndex = 5;
-            this.textBoxBalance.Text = "0";
-            // 
-            // textBoxAccountNumber
-            // 
-            this.textBoxAccountNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "SOTK", true));
-            this.textBoxAccountNumber.Location = new System.Drawing.Point(34, 130);
-            this.textBoxAccountNumber.Name = "textBoxAccountNumber";
-            this.textBoxAccountNumber.Size = new System.Drawing.Size(354, 23);
-            this.textBoxAccountNumber.TabIndex = 3;
-            // 
-            // textBoxCMND
-            // 
-            this.textBoxCMND.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.taiKhoanBindingSource, "CMND", true));
-            this.textBoxCMND.Location = new System.Drawing.Point(34, 64);
-            this.textBoxCMND.Name = "textBoxCMND";
-            this.textBoxCMND.ReadOnly = true;
-            this.textBoxCMND.Size = new System.Drawing.Size(354, 23);
-            this.textBoxCMND.TabIndex = 1;
-            // 
             // taiKhoanTableAdapter
             // 
             this.taiKhoanTableAdapter.ClearBeforeFill = true;
@@ -472,16 +479,34 @@ namespace BankingManagement
             this.colMACN.VisibleIndex = 6;
             this.colMACN.Width = 94;
             // 
-            // dateTimePickerOpenDate
+            // buttonChangeAccountNumber
             // 
-            this.dateTimePickerOpenDate.CustomFormat = "MM/dd/yyyy hh:mm:ss tt";
-            this.dateTimePickerOpenDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taiKhoanBindingSource, "NGAYMOTK", true));
-            this.dateTimePickerOpenDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerOpenDate.Location = new System.Drawing.Point(498, 130);
-            this.dateTimePickerOpenDate.Name = "dateTimePickerOpenDate";
-            this.dateTimePickerOpenDate.Size = new System.Drawing.Size(346, 23);
-            this.dateTimePickerOpenDate.TabIndex = 26;
-            this.dateTimePickerOpenDate.Value = new System.DateTime(2021, 11, 28, 0, 10, 26, 0);
+            this.buttonChangeAccountNumber.Location = new System.Drawing.Point(394, 130);
+            this.buttonChangeAccountNumber.Name = "buttonChangeAccountNumber";
+            this.buttonChangeAccountNumber.Size = new System.Drawing.Size(57, 23);
+            this.buttonChangeAccountNumber.TabIndex = 27;
+            this.buttonChangeAccountNumber.Text = "Đổi";
+            this.buttonChangeAccountNumber.UseVisualStyleBackColor = true;
+            this.buttonChangeAccountNumber.Click += new System.EventHandler(this.buttonChangeAccountNumber_Click);
+            // 
+            // numericUpDownBalance
+            // 
+            this.numericUpDownBalance.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.taiKhoanBindingSource, "SODU", true));
+            this.numericUpDownBalance.Increment = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownBalance.Location = new System.Drawing.Point(35, 196);
+            this.numericUpDownBalance.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDownBalance.Name = "numericUpDownBalance";
+            this.numericUpDownBalance.Size = new System.Drawing.Size(240, 23);
+            this.numericUpDownBalance.TabIndex = 28;
+            this.numericUpDownBalance.ThousandsSeparator = true;
             // 
             // OpenAccountForm
             // 
@@ -509,6 +534,7 @@ namespace BankingManagement
             this.groupControlCustomer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.khachHangGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBalance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,7 +558,6 @@ namespace BankingManagement
         private AccountDataSetTableAdapters.TaiKhoanTableAdapter taiKhoanTableAdapter;
         private AccountDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox textBoxBranchID;
-        private System.Windows.Forms.TextBox textBoxBalance;
         private System.Windows.Forms.TextBox textBoxAccountNumber;
         private System.Windows.Forms.TextBox textBoxCMND;
         private System.Windows.Forms.Label label8;
@@ -553,5 +578,7 @@ namespace BankingManagement
         private DevExpress.XtraBars.BarButtonItem barButtonItemRefresh;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DateTimePicker dateTimePickerOpenDate;
+        private System.Windows.Forms.Button buttonChangeAccountNumber;
+        private System.Windows.Forms.NumericUpDown numericUpDownBalance;
     }
 }

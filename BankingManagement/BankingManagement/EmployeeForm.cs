@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace BankingManagement
 {
     public partial class EmployeeForm : DevExpress.XtraEditors.XtraForm
     {
-        private Stack<String> undoList = new Stack<string>();
+        public static Stack<String> UndoList = new Stack<string>();
         /// <summary>
         /// Store the index of the item before adding or editing for cancel, undo purpose.
         /// </summary>
@@ -145,7 +147,7 @@ namespace BankingManagement
                 barButtonItemDelete.Enabled = false;
             }
 
-            if (barButtonItemUndo.Enabled && undoList.Count == 0)
+            if (barButtonItemUndo.Enabled && UndoList.Count == 0)
             {
                 barButtonItemUndo.Enabled = false;
             }
@@ -222,8 +224,8 @@ namespace BankingManagement
 
                     // if delete was successful, enable undo button
                     barButtonItemUndo.Enabled = true;
-                    undoList.Push(employeeInfo);
-                    undoList.Push("DELETE");
+                    UndoList.Push(employeeInfo);
+                    UndoList.Push("DELETE");
                 }
                 catch (Exception ex)
                 {
@@ -287,16 +289,16 @@ namespace BankingManagement
                 {
                     // in insert mode
                     RefreshPKTable();
-                    undoList.Push(newEmployeeID);
-                    undoList.Push("INSERT");
+                    UndoList.Push(newEmployeeID);
+                    UndoList.Push("INSERT");
                 }
                 else
                 {
                     // in edit mode
                     RefreshDataSet();
-                    undoList.Push(oldEmployeeInfo);
-                    undoList.Push(newEmployeeID);
-                    undoList.Push("UPDATE");
+                    UndoList.Push(oldEmployeeInfo);
+                    UndoList.Push(newEmployeeID);
+                    UndoList.Push("UPDATE");
                 }
                 nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", newEmployeeID);
             }
@@ -337,12 +339,12 @@ namespace BankingManagement
 
         private void barButtonItemUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (undoList.Count > 0)
+            if (UndoList.Count > 0)
             {
-                String statement = undoList.Pop();
+                String statement = UndoList.Pop();
                 if (statement == "DELETE")
                 {
-                    String employeeInfo = undoList.Pop();
+                    String employeeInfo = UndoList.Pop();
                     String[] tokens = employeeInfo.Split('#');
                     nhanVienTableAdapter.Insert(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], 0);
                     RefreshPKTable();
@@ -350,22 +352,22 @@ namespace BankingManagement
                 }
                 else if (statement == "INSERT")
                 {
-                    String employeeID = undoList.Pop();
+                    String employeeID = UndoList.Pop();
                     nhanVienTableAdapter.MyDeleteFunc(employeeID);
                     RefreshPKTable();
                     nhanVienBindingSource.Position = position;
                 }
                 else if (statement == "UPDATE")
                 {
-                    String currentEmployeeID = undoList.Pop();
-                    String oldEmployeeInfo = undoList.Pop();
+                    String currentEmployeeID = UndoList.Pop();
+                    String oldEmployeeInfo = UndoList.Pop();
                     String[] tokens = oldEmployeeInfo.Split('#');
                     nhanVienTableAdapter.MyUpdateFunc(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], int.Parse(tokens[7]), currentEmployeeID);
                     RefreshDataSet();
                     nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", tokens[0]);
                 }
             }
-            if (undoList.Count == 0) barButtonItemUndo.Enabled = false;
+            if (UndoList.Count == 0) barButtonItemUndo.Enabled = false;
         }
 
         private void barButtonItemChangeBranch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -378,9 +380,35 @@ namespace BankingManagement
             {
                 String oldEmployeeID = ((DataRowView)nhanVienBindingSource.Current)["MANV"].ToString();
                 new ChangeBranchDialog(oldEmployeeID).ShowDialog();
+                if (UndoList.Count == 0) barButtonItemUndo.Enabled = false;
                 RefreshPKTable();
                 nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", oldEmployeeID);
             }
+        }
+
+        private void textBoxEmployeeID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        private void textBoxPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
+
+        private void textBoxFamilyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        private void textBoxAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
         }
     }
 }

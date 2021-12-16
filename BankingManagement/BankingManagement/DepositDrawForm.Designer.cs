@@ -40,23 +40,23 @@ namespace BankingManagement
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.textBoxAccountNumber = new System.Windows.Forms.TextBox();
-            this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxEmployeeID = new System.Windows.Forms.TextBox();
             this.textBoxEmployeeName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePickerTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.panelAccountOwner = new System.Windows.Forms.Panel();
+            this.textBoxAccountOwner = new System.Windows.Forms.TextBox();
             this.textBoxCMND = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBoxAccountOwner = new System.Windows.Forms.TextBox();
-            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
             sOTKLabel = new System.Windows.Forms.Label();
             sOTIENLabel = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
@@ -67,10 +67,11 @@ namespace BankingManagement
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
             this.panelAccountOwner.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // sOTKLabel
@@ -133,6 +134,16 @@ namespace BankingManagement
             label3.TabIndex = 9;
             label3.Text = "CMND";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.Location = new System.Drawing.Point(21, 72);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(111, 21);
+            label6.TabIndex = 11;
+            label6.Text = "Chủ tài khoản";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -157,18 +168,12 @@ namespace BankingManagement
             // 
             this.textBoxAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAccountNumber.Location = new System.Drawing.Point(25, 109);
+            this.textBoxAccountNumber.MaxLength = 9;
             this.textBoxAccountNumber.Name = "textBoxAccountNumber";
             this.textBoxAccountNumber.Size = new System.Drawing.Size(442, 28);
             this.textBoxAccountNumber.TabIndex = 3;
+            this.textBoxAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAccountNumber_KeyPress);
             this.textBoxAccountNumber.Validated += new System.EventHandler(this.textBoxAccountNumber_Validated);
-            // 
-            // textBoxAmount
-            // 
-            this.textBoxAmount.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAmount.Location = new System.Drawing.Point(25, 34);
-            this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(442, 28);
-            this.textBoxAmount.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -217,8 +222,8 @@ namespace BankingManagement
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.numericUpDownAmount);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.textBoxAmount);
             this.panel3.Controls.Add(nGAYGDLabel);
             this.panel3.Controls.Add(sOTIENLabel);
             this.panel3.Controls.Add(this.dateTimePickerTransactionDate);
@@ -227,6 +232,35 @@ namespace BankingManagement
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(514, 152);
             this.panel3.TabIndex = 9;
+            // 
+            // numericUpDownAmount
+            // 
+            this.numericUpDownAmount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAmount.Increment = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Location = new System.Drawing.Point(25, 34);
+            this.numericUpDownAmount.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDownAmount.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Name = "numericUpDownAmount";
+            this.numericUpDownAmount.Size = new System.Drawing.Size(442, 32);
+            this.numericUpDownAmount.TabIndex = 9;
+            this.numericUpDownAmount.ThousandsSeparator = true;
+            this.numericUpDownAmount.Value = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -262,6 +296,15 @@ namespace BankingManagement
             this.panelAccountOwner.TabIndex = 8;
             this.panelAccountOwner.Visible = false;
             // 
+            // textBoxAccountOwner
+            // 
+            this.textBoxAccountOwner.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAccountOwner.Location = new System.Drawing.Point(25, 99);
+            this.textBoxAccountOwner.Name = "textBoxAccountOwner";
+            this.textBoxAccountOwner.ReadOnly = true;
+            this.textBoxAccountOwner.Size = new System.Drawing.Size(442, 28);
+            this.textBoxAccountOwner.TabIndex = 12;
+            // 
             // textBoxCMND
             // 
             this.textBoxCMND.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,6 +327,18 @@ namespace BankingManagement
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(514, 147);
             this.panel2.TabIndex = 8;
+            // 
+            // pictureBoxCheck
+            // 
+            this.pictureBoxCheck.Image = global::BankingManagement.Properties.Resources.check;
+            this.pictureBoxCheck.Location = new System.Drawing.Point(473, 109);
+            this.pictureBoxCheck.Name = "pictureBoxCheck";
+            this.pictureBoxCheck.Size = new System.Drawing.Size(31, 28);
+            this.pictureBoxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCheck.TabIndex = 9;
+            this.pictureBoxCheck.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBoxCheck, "Xác thực thành công");
+            this.pictureBoxCheck.Visible = false;
             // 
             // label4
             // 
@@ -311,37 +366,6 @@ namespace BankingManagement
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
             this.errorProvider.ContainerControl = this;
             // 
-            // textBoxAccountOwner
-            // 
-            this.textBoxAccountOwner.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAccountOwner.Location = new System.Drawing.Point(25, 99);
-            this.textBoxAccountOwner.Name = "textBoxAccountOwner";
-            this.textBoxAccountOwner.ReadOnly = true;
-            this.textBoxAccountOwner.Size = new System.Drawing.Size(442, 28);
-            this.textBoxAccountOwner.TabIndex = 12;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.Location = new System.Drawing.Point(21, 72);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(111, 21);
-            label6.TabIndex = 11;
-            label6.Text = "Chủ tài khoản";
-            // 
-            // pictureBoxCheck
-            // 
-            this.pictureBoxCheck.Image = global::BankingManagement.Properties.Resources.check;
-            this.pictureBoxCheck.Location = new System.Drawing.Point(473, 109);
-            this.pictureBoxCheck.Name = "pictureBoxCheck";
-            this.pictureBoxCheck.Size = new System.Drawing.Size(31, 28);
-            this.pictureBoxCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCheck.TabIndex = 9;
-            this.pictureBoxCheck.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxCheck, "Xác thực thành công");
-            this.pictureBoxCheck.Visible = false;
-            // 
             // DepositWithdrawForm
             // 
             this.Appearance.Options.UseFont = true;
@@ -361,12 +385,13 @@ namespace BankingManagement
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
             this.panelAccountOwner.ResumeLayout(false);
             this.panelAccountOwner.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,7 +401,6 @@ namespace BankingManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.TextBox textBoxAccountNumber;
-        private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxEmployeeName;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -393,5 +417,6 @@ namespace BankingManagement
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.PictureBox pictureBoxCheck;
         private System.Windows.Forms.TextBox textBoxAccountOwner;
+        private System.Windows.Forms.NumericUpDown numericUpDownAmount;
     }
 }

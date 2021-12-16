@@ -76,6 +76,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="AccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountForm.Designer.cs">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountStatementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextBoxHandler.cs" />
     <Compile Include="TransferMoneyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +191,9 @@
     <Compile Include="XtraReport_ListOfCustomersByBranch.Designer.cs">
       <DependentUpon>XtraReport_ListOfCustomersByBranch.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountForm.resx">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AccountStatementForm.resx">
       <DependentUpon>AccountStatementForm.cs</DependentUpon>
     </EmbeddedResource>

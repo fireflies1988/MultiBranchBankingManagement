@@ -37,12 +37,12 @@ namespace BankingManagement
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxAccountNumber = new System.Windows.Forms.ComboBox();
-            this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
-            this.accountDataSet = new BankingManagement.AccountDataSet();
             this.taiKhoanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountDataSet = new BankingManagement.AccountDataSet();
+            this.simpleButtonRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.taiKhoanTableAdapter = new BankingManagement.AccountDataSetTableAdapters.TaiKhoanTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taiKhoanBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonPreview
@@ -106,6 +106,17 @@ namespace BankingManagement
             this.comboBoxAccountNumber.Name = "comboBoxAccountNumber";
             this.comboBoxAccountNumber.Size = new System.Drawing.Size(432, 32);
             this.comboBoxAccountNumber.TabIndex = 7;
+            this.comboBoxAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxAccountNumber_KeyPress);
+            // 
+            // taiKhoanBindingSource
+            // 
+            this.taiKhoanBindingSource.DataMember = "TaiKhoan";
+            this.taiKhoanBindingSource.DataSource = this.accountDataSet;
+            // 
+            // accountDataSet
+            // 
+            this.accountDataSet.DataSetName = "AccountDataSet";
+            this.accountDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // simpleButtonRefresh
             // 
@@ -117,16 +128,6 @@ namespace BankingManagement
             this.simpleButtonRefresh.Size = new System.Drawing.Size(46, 36);
             this.simpleButtonRefresh.TabIndex = 16;
             this.simpleButtonRefresh.Click += new System.EventHandler(this.simpleButtonRefresh_Click);
-            // 
-            // accountDataSet
-            // 
-            this.accountDataSet.DataSetName = "AccountDataSet";
-            this.accountDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // taiKhoanBindingSource
-            // 
-            this.taiKhoanBindingSource.DataMember = "TaiKhoan";
-            this.taiKhoanBindingSource.DataSource = this.accountDataSet;
             // 
             // taiKhoanTableAdapter
             // 
@@ -148,8 +149,8 @@ namespace BankingManagement
             this.Name = "AccountStatementForm";
             this.Text = "Sao kê giao dịch";
             this.Load += new System.EventHandler(this.AccountStatementForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taiKhoanBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

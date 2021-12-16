@@ -91,6 +91,7 @@ namespace BankingManagement
                         }
                     }
                     MessageBox.Show(this, "Chuyển chi nhánh thành công.", "Chuyển chi nhánh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    EmployeeForm.UndoList.Clear();
                     Close();
                 }
             }

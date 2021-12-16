@@ -492,41 +492,51 @@ namespace BankingManagement
             // 
             this.textBoxPhoneNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "SODT", true));
             this.textBoxPhoneNumber.Location = new System.Drawing.Point(29, 247);
+            this.textBoxPhoneNumber.MaxLength = 15;
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(246, 23);
             this.textBoxPhoneNumber.TabIndex = 11;
+            this.textBoxPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhoneNumber_KeyPress);
             // 
             // textBoxAddress
             // 
             this.textBoxAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "DIACHI", true));
             this.textBoxAddress.Location = new System.Drawing.Point(29, 186);
+            this.textBoxAddress.MaxLength = 100;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(837, 23);
             this.textBoxAddress.TabIndex = 7;
+            this.textBoxAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAddress_KeyPress);
             // 
             // textBoxName
             // 
             this.textBoxName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "TEN", true));
             this.textBoxName.Location = new System.Drawing.Point(288, 122);
+            this.textBoxName.MaxLength = 10;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 23);
             this.textBoxName.TabIndex = 5;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             // 
             // textBoxFamilyName
             // 
             this.textBoxFamilyName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "HO", true));
             this.textBoxFamilyName.Location = new System.Drawing.Point(29, 122);
+            this.textBoxFamilyName.MaxLength = 50;
             this.textBoxFamilyName.Name = "textBoxFamilyName";
             this.textBoxFamilyName.Size = new System.Drawing.Size(246, 23);
             this.textBoxFamilyName.TabIndex = 3;
+            this.textBoxFamilyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFamilyName_KeyPress);
             // 
             // textBoxCMND
             // 
             this.textBoxCMND.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.khachHangBindingSource, "CMND", true));
             this.textBoxCMND.Location = new System.Drawing.Point(29, 61);
+            this.textBoxCMND.MaxLength = 10;
             this.textBoxCMND.Name = "textBoxCMND";
             this.textBoxCMND.Size = new System.Drawing.Size(359, 23);
             this.textBoxCMND.TabIndex = 1;
+            this.textBoxCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCMND_KeyPress);
             // 
             // groupControl2
             // 

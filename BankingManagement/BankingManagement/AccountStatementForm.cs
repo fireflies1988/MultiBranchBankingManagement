@@ -30,6 +30,7 @@ namespace BankingManagement
             this.taiKhoanTableAdapter.Connection.ConnectionString = Program.GetConnectionString(Program.SubscriberName, Program.LoginName, Program.Password);
             LoadDataIntoAccountNumberComboBox();
 
+            ActiveControl = buttonPreview;
             dateTimePickerFrom.Value = DateTime.Now;
             dateTimePickerTo.Value = DateTime.Now;
         }
@@ -63,6 +64,11 @@ namespace BankingManagement
             report.xrLabelTo.Text = dateTimePickerTo.Text;
             ReportPrintTool rpt = new ReportPrintTool(report);
             rpt.ShowPreviewDialog();
+        }
+
+        private void comboBoxAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
         }
     }
 }

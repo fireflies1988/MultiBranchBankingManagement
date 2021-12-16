@@ -35,23 +35,16 @@ namespace BankingManagement
             comboBoxType.SelectedIndex = 0;
             dateTimePickerTransactionDate.Value = DateTime.Now;
             textBoxAccountNumber.ResetText();
-            textBoxAmount.ResetText();
+            numericUpDownAmount.Value = 100000;
             panelAccountOwner.Visible = false;
             pictureBoxCheck.Visible = false;
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(textBoxAccountNumber.Text) || String.IsNullOrWhiteSpace(textBoxAmount.Text))
+            if (String.IsNullOrWhiteSpace(textBoxAccountNumber.Text))
             {
                 MessageBox.Show(this, "Các trường bắt buộc không được bỏ trống, vui lòng điền đầy đủ!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // !!!!!!! textbox: allow number only
-            if (int.Parse(textBoxAmount.Text) < 100000)
-            {
-                MessageBox.Show(this, "Số tiền giao dịch tối thiểu là 100000, không được nhỏ hơn!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -66,7 +59,7 @@ namespace BankingManagement
                         cmd.Parameters.Add("@SOTK", SqlDbType.NChar).Value = textBoxAccountNumber.Text;
                         cmd.Parameters.Add("@LOAIGD", SqlDbType.NChar).Value = comboBoxType.SelectedValue;
                         cmd.Parameters.Add("@NGAYGD", SqlDbType.DateTime).Value = dateTimePickerTransactionDate.Value;
-                        cmd.Parameters.Add("@SOTIEN", SqlDbType.Money).Value = textBoxAmount.Text;
+                        cmd.Parameters.Add("@SOTIEN", SqlDbType.Money).Value = numericUpDownAmount.Value;
                         cmd.Parameters.Add("@MANV", SqlDbType.NChar).Value = textBoxEmployeeID.Text;
                         cmd.ExecuteNonQuery();
                         MessageBox.Show(this, "Giao dịch thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -115,5 +108,9 @@ namespace BankingManagement
             }
         }
 
+        private void textBoxAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
     }
 }

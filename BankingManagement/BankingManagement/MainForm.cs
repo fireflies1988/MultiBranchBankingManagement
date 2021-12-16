@@ -199,5 +199,20 @@ namespace BankingManagement
                 f.Show();
             }
         }
+
+        private void barButtonItemAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form f = CheckExists(typeof(AccountForm));
+            if (f != null)
+            {
+                f.Activate();
+            }
+            else
+            {
+                f = new AccountForm();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

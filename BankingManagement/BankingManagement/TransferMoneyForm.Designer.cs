@@ -48,9 +48,9 @@ namespace BankingManagement
             this.textBoxTransferor = new System.Windows.Forms.TextBox();
             this.textBoxTransferorID = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBoxCheck1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTransferorAccountNumber = new System.Windows.Forms.TextBox();
-            this.pictureBoxCheck1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panelAccountOwner2 = new System.Windows.Forms.Panel();
             this.textBoxBeneficiary = new System.Windows.Forms.TextBox();
@@ -62,11 +62,11 @@ namespace BankingManagement
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.dateTimePickerTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             label2 = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
@@ -89,7 +89,108 @@ namespace BankingManagement
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(21, 106);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(114, 21);
+            label2.TabIndex = 2;
+            label2.Text = "Tên nhân viên";
+            // 
+            // mANVLabel
+            // 
+            mANVLabel.AutoSize = true;
+            mANVLabel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mANVLabel.Location = new System.Drawing.Point(21, 38);
+            mANVLabel.Name = "mANVLabel";
+            mANVLabel.Size = new System.Drawing.Size(108, 21);
+            mANVLabel.TabIndex = 0;
+            mANVLabel.Text = "Mã nhân viên";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label6.Location = new System.Drawing.Point(21, 72);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(110, 21);
+            label6.TabIndex = 11;
+            label6.Text = "Người chuyển";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(21, 3);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(56, 21);
+            label3.TabIndex = 9;
+            label3.Text = "CMND";
+            // 
+            // sOTKLabel
+            // 
+            sOTKLabel.AutoSize = true;
+            sOTKLabel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            sOTKLabel.Location = new System.Drawing.Point(18, 10);
+            sOTKLabel.Name = "sOTKLabel";
+            sOTKLabel.Size = new System.Drawing.Size(158, 21);
+            sOTKLabel.TabIndex = 2;
+            sOTKLabel.Text = "Số tài khoản chuyển";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label9.Location = new System.Drawing.Point(21, 72);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(94, 21);
+            label9.TabIndex = 11;
+            label9.Text = "Người nhận";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label10.Location = new System.Drawing.Point(21, 3);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(56, 21);
+            label10.TabIndex = 9;
+            label10.Text = "CMND";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label12.Location = new System.Drawing.Point(18, 10);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(142, 21);
+            label12.TabIndex = 2;
+            label12.Text = "Số tài khoản nhận";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.Location = new System.Drawing.Point(21, 75);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(118, 21);
+            label7.TabIndex = 6;
+            label7.Text = "Ngày giao dịch";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label8.Location = new System.Drawing.Point(21, 7);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(61, 21);
+            label8.TabIndex = 4;
+            label8.Text = "Số tiền";
             // 
             // groupBox1
             // 
@@ -114,16 +215,6 @@ namespace BankingManagement
             this.textBoxEmployeeID.Size = new System.Drawing.Size(442, 28);
             this.textBoxEmployeeID.TabIndex = 9;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label2.Location = new System.Drawing.Point(21, 106);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(114, 21);
-            label2.TabIndex = 2;
-            label2.Text = "Tên nhân viên";
-            // 
             // textBoxEmployeeName
             // 
             this.textBoxEmployeeName.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,16 +223,6 @@ namespace BankingManagement
             this.textBoxEmployeeName.ReadOnly = true;
             this.textBoxEmployeeName.Size = new System.Drawing.Size(442, 28);
             this.textBoxEmployeeName.TabIndex = 3;
-            // 
-            // mANVLabel
-            // 
-            mANVLabel.AutoSize = true;
-            mANVLabel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mANVLabel.Location = new System.Drawing.Point(21, 38);
-            mANVLabel.Name = "mANVLabel";
-            mANVLabel.Size = new System.Drawing.Size(108, 21);
-            mANVLabel.TabIndex = 0;
-            mANVLabel.Text = "Mã nhân viên";
             // 
             // groupBox2
             // 
@@ -177,16 +258,6 @@ namespace BankingManagement
             this.textBoxTransferor.Size = new System.Drawing.Size(439, 28);
             this.textBoxTransferor.TabIndex = 12;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label6.Location = new System.Drawing.Point(21, 72);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(110, 21);
-            label6.TabIndex = 11;
-            label6.Text = "Người chuyển";
-            // 
             // textBoxTransferorID
             // 
             this.textBoxTransferorID.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,16 +266,6 @@ namespace BankingManagement
             this.textBoxTransferorID.ReadOnly = true;
             this.textBoxTransferorID.Size = new System.Drawing.Size(439, 28);
             this.textBoxTransferorID.TabIndex = 10;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label3.Location = new System.Drawing.Point(21, 3);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(56, 21);
-            label3.TabIndex = 9;
-            label3.Text = "CMND";
             // 
             // panel2
             // 
@@ -218,35 +279,6 @@ namespace BankingManagement
             this.panel2.Size = new System.Drawing.Size(514, 216);
             this.panel2.TabIndex = 8;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(171, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 24);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "*";
-            // 
-            // sOTKLabel
-            // 
-            sOTKLabel.AutoSize = true;
-            sOTKLabel.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sOTKLabel.Location = new System.Drawing.Point(18, 10);
-            sOTKLabel.Name = "sOTKLabel";
-            sOTKLabel.Size = new System.Drawing.Size(158, 21);
-            sOTKLabel.TabIndex = 2;
-            sOTKLabel.Text = "Số tài khoản chuyển";
-            // 
-            // textBoxTransferorAccountNumber
-            // 
-            this.textBoxTransferorAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTransferorAccountNumber.Location = new System.Drawing.Point(22, 37);
-            this.textBoxTransferorAccountNumber.Name = "textBoxTransferorAccountNumber";
-            this.textBoxTransferorAccountNumber.Size = new System.Drawing.Size(442, 28);
-            this.textBoxTransferorAccountNumber.TabIndex = 3;
-            this.textBoxTransferorAccountNumber.Validated += new System.EventHandler(this.textBoxTransferorAccountNumber_Validated);
-            // 
             // pictureBoxCheck1
             // 
             this.pictureBoxCheck1.Image = global::BankingManagement.Properties.Resources.check;
@@ -258,6 +290,26 @@ namespace BankingManagement
             this.pictureBoxCheck1.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBoxCheck1, "Xác thực thành công");
             this.pictureBoxCheck1.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(171, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 24);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "*";
+            // 
+            // textBoxTransferorAccountNumber
+            // 
+            this.textBoxTransferorAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTransferorAccountNumber.Location = new System.Drawing.Point(22, 37);
+            this.textBoxTransferorAccountNumber.Name = "textBoxTransferorAccountNumber";
+            this.textBoxTransferorAccountNumber.Size = new System.Drawing.Size(442, 28);
+            this.textBoxTransferorAccountNumber.TabIndex = 3;
+            this.textBoxTransferorAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTransferorAccountNumber_KeyPress);
+            this.textBoxTransferorAccountNumber.Validated += new System.EventHandler(this.textBoxTransferorAccountNumber_Validated);
             // 
             // groupBox3
             // 
@@ -294,16 +346,6 @@ namespace BankingManagement
             this.textBoxBeneficiary.Size = new System.Drawing.Size(439, 28);
             this.textBoxBeneficiary.TabIndex = 12;
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.Location = new System.Drawing.Point(21, 72);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(94, 21);
-            label9.TabIndex = 11;
-            label9.Text = "Người nhận";
-            // 
             // textBoxBeneficiaryID
             // 
             this.textBoxBeneficiaryID.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,16 +354,6 @@ namespace BankingManagement
             this.textBoxBeneficiaryID.ReadOnly = true;
             this.textBoxBeneficiaryID.Size = new System.Drawing.Size(439, 28);
             this.textBoxBeneficiaryID.TabIndex = 10;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label10.Location = new System.Drawing.Point(21, 3);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(56, 21);
-            label10.TabIndex = 9;
-            label10.Text = "CMND";
             // 
             // panel5
             // 
@@ -357,16 +389,6 @@ namespace BankingManagement
             this.label11.TabIndex = 18;
             this.label11.Text = "*";
             // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label12.Location = new System.Drawing.Point(18, 10);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(142, 21);
-            label12.TabIndex = 2;
-            label12.Text = "Số tài khoản nhận";
-            // 
             // textBoxBeneficiaryAccountNumber
             // 
             this.textBoxBeneficiaryAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -374,6 +396,7 @@ namespace BankingManagement
             this.textBoxBeneficiaryAccountNumber.Name = "textBoxBeneficiaryAccountNumber";
             this.textBoxBeneficiaryAccountNumber.Size = new System.Drawing.Size(442, 28);
             this.textBoxBeneficiaryAccountNumber.TabIndex = 3;
+            this.textBoxBeneficiaryAccountNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBeneficiaryAccountNumber_KeyPress);
             this.textBoxBeneficiaryAccountNumber.Validated += new System.EventHandler(this.textBoxBeneficiaryAccountNumber_Validated);
             // 
             // groupBox4
@@ -389,8 +412,8 @@ namespace BankingManagement
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.numericUpDownAmount);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBoxAmount);
             this.panel1.Controls.Add(label7);
             this.panel1.Controls.Add(label8);
             this.panel1.Controls.Add(this.dateTimePickerTransactionDate);
@@ -409,34 +432,6 @@ namespace BankingManagement
             this.label1.Size = new System.Drawing.Size(23, 24);
             this.label1.TabIndex = 19;
             this.label1.Text = "*";
-            // 
-            // textBoxAmount
-            // 
-            this.textBoxAmount.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAmount.Location = new System.Drawing.Point(25, 34);
-            this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(439, 28);
-            this.textBoxAmount.TabIndex = 5;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label7.Location = new System.Drawing.Point(21, 75);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(118, 21);
-            label7.TabIndex = 6;
-            label7.Text = "Ngày giao dịch";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label8.Location = new System.Drawing.Point(21, 7);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(61, 21);
-            label8.TabIndex = 4;
-            label8.Text = "Số tiền";
             // 
             // dateTimePickerTransactionDate
             // 
@@ -461,6 +456,35 @@ namespace BankingManagement
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // numericUpDownAmount
+            // 
+            this.numericUpDownAmount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAmount.Increment = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Location = new System.Drawing.Point(25, 34);
+            this.numericUpDownAmount.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDownAmount.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Name = "numericUpDownAmount";
+            this.numericUpDownAmount.Size = new System.Drawing.Size(439, 32);
+            this.numericUpDownAmount.TabIndex = 13;
+            this.numericUpDownAmount.ThousandsSeparator = true;
+            this.numericUpDownAmount.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            // 
             // TransferMoneyForm
             // 
             this.Appearance.Options.UseFont = true;
@@ -472,7 +496,7 @@ namespace BankingManagement
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TransferMoneyForm";
             this.Text = "Chuyển tiền";
             this.Load += new System.EventHandler(this.TransferMoneyForm_Load);
@@ -494,6 +518,7 @@ namespace BankingManagement
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,10 +548,10 @@ namespace BankingManagement
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.DateTimePicker dateTimePickerTransactionDate;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.NumericUpDown numericUpDownAmount;
     }
 }

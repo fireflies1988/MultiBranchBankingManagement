@@ -314,5 +314,30 @@ namespace BankingManagement
             }
             if (undoList.Count == 0) barButtonItemUndo.Enabled = false;
         }
+
+        private void textBoxCMND_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
+
+        private void textBoxPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
+
+        private void textBoxFamilyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        private void textBoxAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
     }
 }

@@ -91,7 +91,7 @@ namespace BankingManagement
             dateTimePickerTransactionDate.Value = DateTime.Now;
             textBoxTransferorAccountNumber.ResetText();
             textBoxBeneficiaryAccountNumber.ResetText();
-            textBoxAmount.ResetText();
+            numericUpDownAmount.Value = 10000;
             panelAccountOwner1.Visible = false;
             pictureBoxCheck1.Visible = false;
             panelAccountOwner2.Visible = false;
@@ -100,8 +100,7 @@ namespace BankingManagement
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(textBoxTransferorAccountNumber.Text) || String.IsNullOrWhiteSpace(textBoxAmount.Text)
-                || String.IsNullOrWhiteSpace(textBoxBeneficiaryAccountNumber.Text))
+            if (String.IsNullOrWhiteSpace(textBoxTransferorAccountNumber.Text) || String.IsNullOrWhiteSpace(textBoxBeneficiaryAccountNumber.Text))
             {
                 MessageBox.Show(this, "Các trường bắt buộc không được bỏ trống, vui lòng điền đầy đủ!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -110,13 +109,6 @@ namespace BankingManagement
             if (textBoxTransferorAccountNumber.Text == textBoxBeneficiaryAccountNumber.Text)
             {
                 MessageBox.Show(this, "Tài khoản chuyển và nhận không được trùng nhau!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // !!!!!!! textbox: allow number only
-            if (int.Parse(textBoxAmount.Text) <= 0)
-            {
-                MessageBox.Show(this, "Số tiền giao dịch phải lớn hơn 0!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -130,7 +122,7 @@ namespace BankingManagement
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@SOTK_CHUYEN", SqlDbType.NChar).Value = textBoxTransferorAccountNumber.Text;
                         cmd.Parameters.Add("@NGAYGD", SqlDbType.DateTime).Value = dateTimePickerTransactionDate.Value;
-                        cmd.Parameters.Add("@SOTIEN", SqlDbType.Money).Value = textBoxAmount.Text;
+                        cmd.Parameters.Add("@SOTIEN", SqlDbType.Money).Value = numericUpDownAmount.Value;
                         cmd.Parameters.Add("@SOTK_NHAN", SqlDbType.NChar).Value = textBoxBeneficiaryAccountNumber.Text;
                         cmd.Parameters.Add("@MANV", SqlDbType.NChar).Value = textBoxEmployeeID.Text;
                         cmd.ExecuteNonQuery();
@@ -149,6 +141,16 @@ namespace BankingManagement
                 MessageBox.Show(this, "Số tài khoản không hợp lệ, vui lòng kiểm tra lại", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void textBoxTransferorAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
+
+        private void textBoxBeneficiaryAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
         }
     }
 }

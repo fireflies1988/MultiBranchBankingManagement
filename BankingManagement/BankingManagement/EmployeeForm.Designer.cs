@@ -546,14 +546,17 @@ namespace BankingManagement
             // 
             this.textBoxPhoneNumber.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nhanVienBindingSource, "SODT", true));
             this.textBoxPhoneNumber.Location = new System.Drawing.Point(29, 247);
+            this.textBoxPhoneNumber.MaxLength = 15;
             this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             this.textBoxPhoneNumber.Size = new System.Drawing.Size(246, 23);
             this.textBoxPhoneNumber.TabIndex = 11;
+            this.textBoxPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhoneNumber_KeyPress);
             // 
             // textBoxAddress
             // 
             this.textBoxAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nhanVienBindingSource, "DIACHI", true));
             this.textBoxAddress.Location = new System.Drawing.Point(29, 186);
+            this.textBoxAddress.MaxLength = 100;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(837, 23);
             this.textBoxAddress.TabIndex = 7;
@@ -562,6 +565,7 @@ namespace BankingManagement
             // 
             this.textBoxName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nhanVienBindingSource, "TEN", true));
             this.textBoxName.Location = new System.Drawing.Point(288, 122);
+            this.textBoxName.MaxLength = 10;
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 23);
             this.textBoxName.TabIndex = 5;
@@ -570,6 +574,7 @@ namespace BankingManagement
             // 
             this.textBoxFamilyName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nhanVienBindingSource, "HO", true));
             this.textBoxFamilyName.Location = new System.Drawing.Point(29, 122);
+            this.textBoxFamilyName.MaxLength = 40;
             this.textBoxFamilyName.Name = "textBoxFamilyName";
             this.textBoxFamilyName.Size = new System.Drawing.Size(246, 23);
             this.textBoxFamilyName.TabIndex = 3;
@@ -578,9 +583,11 @@ namespace BankingManagement
             // 
             this.textBoxEmployeeID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nhanVienBindingSource, "MANV", true));
             this.textBoxEmployeeID.Location = new System.Drawing.Point(29, 61);
+            this.textBoxEmployeeID.MaxLength = 10;
             this.textBoxEmployeeID.Name = "textBoxEmployeeID";
             this.textBoxEmployeeID.Size = new System.Drawing.Size(359, 23);
             this.textBoxEmployeeID.TabIndex = 1;
+            this.textBoxEmployeeID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxEmployeeID_KeyPress);
             // 
             // groupControl2
             // 

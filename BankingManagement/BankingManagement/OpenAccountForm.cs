@@ -55,6 +55,8 @@ namespace BankingManagement
             taiKhoanBindingSource.AddNew();
             textBoxBranchID.Text = Program.BranchID;
             textBoxCMND.Text = ((DataRowView)khachHangBindingSource.Current)["CMND"].ToString();
+            textBoxAccountNumber.Text = generateARandomBankAccountNumber();
+            numericUpDownBalance.Value = 0;
             dateTimePickerOpenDate.Value = DateTime.Now;
         }
 
@@ -71,7 +73,7 @@ namespace BankingManagement
 
         private void barButtonItemFinish_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(textBoxAccountNumber.Text) || String.IsNullOrWhiteSpace(textBoxBalance.Text))
+            if (String.IsNullOrWhiteSpace(textBoxAccountNumber.Text))
             {
                 MessageBox.Show(this, "Các trường bắt buộc không được bỏ trống!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -110,6 +112,38 @@ namespace BankingManagement
                 return;
             }
             ChangeFormAppearance(false);
+        }
+
+        private void textBoxAccountNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxHandler.AcceptsOnlyNumbers(sender, e);
+        }
+
+        private String generateARandomBankAccountNumber()
+        {
+            Random generator = new Random();
+            String accountNumber = generator.Next(0, 999999999).ToString("D9");
+            try
+            {
+                using (SqlConnection connection = Program.GetConnectionToSubsciber())
+                {
+                    while ((int)Program.GetSPReturnValue(connection, "sp_TaiKhoan_CheckExists", "@SOTK", accountNumber) == 1)
+                    {
+                        accountNumber = generator.Next(0, 999999999).ToString("D9");
+                    }
+                    return accountNumber;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "Lỗi tạo số tài khoản ngẫu nhiên.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
+        }
+
+        private void buttonChangeAccountNumber_Click(object sender, EventArgs e)
+        {
+            textBoxAccountNumber.Text = generateARandomBankAccountNumber();
         }
     }
 }
