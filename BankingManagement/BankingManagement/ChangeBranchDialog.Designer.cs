@@ -75,6 +75,7 @@ namespace BankingManagement
             // 
             this.textBoxNewEmployeeID.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNewEmployeeID.Location = new System.Drawing.Point(49, 128);
+            this.textBoxNewEmployeeID.MaxLength = 10;
             this.textBoxNewEmployeeID.Name = "textBoxNewEmployeeID";
             this.textBoxNewEmployeeID.Size = new System.Drawing.Size(344, 28);
             this.textBoxNewEmployeeID.TabIndex = 3;

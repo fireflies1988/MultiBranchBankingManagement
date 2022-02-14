@@ -519,6 +519,7 @@ namespace BankingManagement
             this.checkBoxDeleted.TabIndex = 15;
             this.checkBoxDeleted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxDeleted.UseVisualStyleBackColor = true;
+            this.checkBoxDeleted.CheckedChanged += new System.EventHandler(this.checkBoxDeleted_CheckedChanged);
             // 
             // comboBoxSex
             // 

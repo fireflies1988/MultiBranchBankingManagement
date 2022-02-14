@@ -61,12 +61,12 @@ namespace BankingManagement
             this.textBoxBeneficiaryAccountNumber = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerTransactionDate = new System.Windows.Forms.DateTimePicker();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.numericUpDownAmount = new System.Windows.Forms.NumericUpDown();
             label2 = new System.Windows.Forms.Label();
             mANVLabel = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
@@ -88,8 +88,8 @@ namespace BankingManagement
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck2)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -305,6 +305,7 @@ namespace BankingManagement
             // 
             this.textBoxTransferorAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTransferorAccountNumber.Location = new System.Drawing.Point(22, 37);
+            this.textBoxTransferorAccountNumber.MaxLength = 9;
             this.textBoxTransferorAccountNumber.Name = "textBoxTransferorAccountNumber";
             this.textBoxTransferorAccountNumber.Size = new System.Drawing.Size(442, 28);
             this.textBoxTransferorAccountNumber.TabIndex = 3;
@@ -393,6 +394,7 @@ namespace BankingManagement
             // 
             this.textBoxBeneficiaryAccountNumber.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBeneficiaryAccountNumber.Location = new System.Drawing.Point(22, 37);
+            this.textBoxBeneficiaryAccountNumber.MaxLength = 9;
             this.textBoxBeneficiaryAccountNumber.Name = "textBoxBeneficiaryAccountNumber";
             this.textBoxBeneficiaryAccountNumber.Size = new System.Drawing.Size(442, 28);
             this.textBoxBeneficiaryAccountNumber.TabIndex = 3;
@@ -422,6 +424,35 @@ namespace BankingManagement
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(514, 154);
             this.panel1.TabIndex = 10;
+            // 
+            // numericUpDownAmount
+            // 
+            this.numericUpDownAmount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAmount.Increment = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Location = new System.Drawing.Point(25, 34);
+            this.numericUpDownAmount.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDownAmount.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownAmount.Name = "numericUpDownAmount";
+            this.numericUpDownAmount.Size = new System.Drawing.Size(439, 32);
+            this.numericUpDownAmount.TabIndex = 13;
+            this.numericUpDownAmount.ThousandsSeparator = true;
+            this.numericUpDownAmount.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -456,35 +487,6 @@ namespace BankingManagement
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // numericUpDownAmount
-            // 
-            this.numericUpDownAmount.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAmount.Increment = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownAmount.Location = new System.Drawing.Point(25, 34);
-            this.numericUpDownAmount.Maximum = new decimal(new int[] {
-            -1530494977,
-            232830,
-            0,
-            0});
-            this.numericUpDownAmount.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numericUpDownAmount.Name = "numericUpDownAmount";
-            this.numericUpDownAmount.Size = new System.Drawing.Size(439, 32);
-            this.numericUpDownAmount.TabIndex = 13;
-            this.numericUpDownAmount.ThousandsSeparator = true;
-            this.numericUpDownAmount.Value = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            // 
             // TransferMoneyForm
             // 
             this.Appearance.Options.UseFont = true;
@@ -517,8 +519,8 @@ namespace BankingManagement
             this.groupBox4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

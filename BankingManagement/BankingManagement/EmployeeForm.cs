@@ -199,39 +199,78 @@ namespace BankingManagement
         private void barButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // !!!!!!!!!!!!!!!!!!!!! Login account
-            if (gdChuyenTienBindingSource.Count > 0)
+            //if (gdChuyenTienBindingSource.Count > 0)
+            //{
+            //    MessageBox.Show(this, "Không thể xóa nhân viên này vì có ràng buộc với các giao dịch chuyển tiền!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else if (gdGoiRutBindingSource.Count > 0)
+            //{
+            //    MessageBox.Show(this, "Không thể xóa nhân viên này vì có ràng buộc với các giao dịch gởi rút tiền!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            if (MessageBox.Show(this, "Việc xóa nhân viên sẽ xóa luôn tài khoản login (nếu có) và bạn không thể hoàn tác hành động này. Bạn có chắc muốn xóa nhân viên này?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(this, "Không thể xóa nhân viên này vì có ràng buộc với các giao dịch chuyển tiền!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (gdGoiRutBindingSource.Count > 0)
-            {
-                MessageBox.Show(this, "Không thể xóa nhân viên này vì có ràng buộc với các giao dịch gởi rút tiền!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (MessageBox.Show(this, "Bạn có chắc muốn xóa nhân viên này?", "Xóa nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
+                // delete login
                 try
                 {
-                    // !!!!!!!!!!!!!!!!!!!!! remember to handle # sign
-                    int checkState = checkBoxDeleted.Checked ? 1 : 0;
-                    String employeeInfo = textBoxEmployeeID.Text + "#" + textBoxFamilyName.Text + "#" +
-                        textBoxName.Text + "#" + textBoxAddress.Text + "#" + comboBoxSex.Text + "#" +
-                        textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text + "#" + checkState;
-
-                    nhanVienBindingSource.RemoveCurrent();
-                    Validate();
-                    nhanVienBindingSource.EndEdit();
-                    nhanVienTableAdapter.Update(bankDataSet.NhanVien);
-
-                    // if delete was successful, enable undo button
-                    barButtonItemUndo.Enabled = true;
-                    UndoList.Push(employeeInfo);
-                    UndoList.Push("DELETE");
+                    using (SqlConnection connection = Program.GetConnectionToSubsciber())
+                    {
+                        SqlCommand cmd = new SqlCommand("sp_Login_DeleteLogin", connection);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@Username", SqlDbType.NChar).Value = textBoxEmployeeID.Text;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, "Xóa nhân viên không thành công!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Không thể xóa nhân viên mà hiện tại đang đăng nhập.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (gdChuyenTienBindingSource.Count > 0 || gdGoiRutBindingSource.Count > 0)
+                {
+                    try
+                    {
+                        checkBoxDeleted.Checked = true;
+                        Validate();
+                        nhanVienBindingSource.EndEdit();
+                        nhanVienTableAdapter.Update(bankDataSet.NhanVien);
+
+                        barButtonItemUndo.Enabled = true;
+                        UndoList.Push(textBoxEmployeeID.Text);
+                        UndoList.Push("DISABLE");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, "Xóa nhân viên không thành công!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        // !!!!!!!!!!!!!!!!!!!!! remember to handle # sign
+                        int checkState = checkBoxDeleted.Checked ? 1 : 0;
+                        String employeeInfo = textBoxEmployeeID.Text + "#" + textBoxFamilyName.Text + "#" +
+                            textBoxName.Text + "#" + textBoxAddress.Text + "#" + comboBoxSex.Text + "#" +
+                            textBoxPhoneNumber.Text + "#" + textBoxBranchID.Text + "#" + checkState;
+
+                        nhanVienBindingSource.RemoveCurrent();
+                        Validate();
+                        nhanVienBindingSource.EndEdit();
+                        nhanVienTableAdapter.Update(bankDataSet.NhanVien);
+
+                        // if delete was successful, enable undo button
+                        barButtonItemUndo.Enabled = true;
+                        UndoList.Push(employeeInfo);
+                        UndoList.Push("DELETE");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, "Xóa nhân viên không thành công!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+
             if (nhanVienBindingSource.Count == 0)
             {
                 barButtonItemDelete.Enabled = false;
@@ -346,7 +385,7 @@ namespace BankingManagement
                 {
                     String employeeInfo = UndoList.Pop();
                     String[] tokens = employeeInfo.Split('#');
-                    nhanVienTableAdapter.Insert(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], 0);
+                    nhanVienTableAdapter.Insert(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], int.Parse(tokens[7]));
                     RefreshPKTable();
                     nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", tokens[0]);
                 }
@@ -366,24 +405,40 @@ namespace BankingManagement
                     RefreshDataSet();
                     nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", tokens[0]);
                 }
+                else if (statement == "DISABLE")
+                {
+                    String employeeId = UndoList.Pop();
+                    try
+                    {
+                        nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", employeeId);
+                        checkBoxDeleted.Checked = false;
+                        Validate();
+                        nhanVienBindingSource.EndEdit();
+                        nhanVienTableAdapter.Update(bankDataSet.NhanVien);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             if (UndoList.Count == 0) barButtonItemUndo.Enabled = false;
         }
 
         private void barButtonItemChangeBranch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (checkBoxDeleted.Checked)
-            {
-                MessageBox.Show(this, "Không thể chuyển chi nhánh nhân viên ở trạng thái xóa!", "Chuyển chi nhánh", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                String oldEmployeeID = ((DataRowView)nhanVienBindingSource.Current)["MANV"].ToString();
-                new ChangeBranchDialog(oldEmployeeID).ShowDialog();
-                if (UndoList.Count == 0) barButtonItemUndo.Enabled = false;
-                RefreshPKTable();
-                nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", oldEmployeeID);
-            }
+            //if (checkBoxDeleted.Checked)
+            //{
+            //    MessageBox.Show(this, "Không thể chuyển chi nhánh nhân viên ở trạng thái xóa!", "Chuyển chi nhánh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            String oldEmployeeID = ((DataRowView)nhanVienBindingSource.Current)["MANV"].ToString();
+            new ChangeBranchDialog(oldEmployeeID).ShowDialog();
+            if (UndoList.Count == 0) barButtonItemUndo.Enabled = false;
+            RefreshPKTable();
+            nhanVienBindingSource.Position = nhanVienBindingSource.Find("MANV", oldEmployeeID);
+            //}
         }
 
         private void textBoxEmployeeID_KeyPress(object sender, KeyPressEventArgs e)
@@ -409,6 +464,12 @@ namespace BankingManagement
         private void textBoxAddress_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBoxHandler.PreventASpecificCharInput(sender, e, '#');
+        }
+
+        // disable delete, modify, change branch button if TrangThaiXoa is marked 1 
+        private void checkBoxDeleted_CheckedChanged(object sender, EventArgs e)
+        {
+            barButtonItemDelete.Enabled = barButtonItemChangeBranch.Enabled = barButtonItemModify.Enabled = !checkBoxDeleted.Checked;
         }
     }
 }

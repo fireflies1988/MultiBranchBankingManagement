@@ -68,7 +68,7 @@ namespace BankingManagement
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Giao dịch không thành công.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
